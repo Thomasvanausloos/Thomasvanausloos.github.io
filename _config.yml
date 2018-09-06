@@ -6,7 +6,7 @@ title: My coding blog # used in <title> tag & site header
 author: Thomas Vanausloos # used in a <meta> tag & /feed.xml
 description: # used in a <meta> tag & /feed.xml
   My personal blog to share the lessons I learned while coding with the world.
-slogan: Showtime! # used in site header, beside title
+slogan: Thomas Vanausloos # used in site header, beside title
 avatar: /i/avatar.png # used as portrait in site header
 banner: /i/mountains.svg # used as background in site header
 url: http://solana.ryanlue.com # used by plugins to generate feed.xml and sitemap.xml

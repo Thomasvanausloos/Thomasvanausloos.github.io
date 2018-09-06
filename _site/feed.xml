@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-09-06T20:49:16+02:00</updated><id>http://localhost:4000/</id><title type="html">My coding blog</title><subtitle>My personal blog to share the lessons I learned while coding with the world.
+</subtitle><author><name>Thomas Vanausloos</name></author><entry><title type="html">Welcome to Solana</title><link href="http://localhost:4000/posts/2017-03-28-welcome-to-solana" rel="alternate" type="text/html" title="Welcome to Solana" /><published>2017-03-28T00:00:00+02:00</published><updated>2017-03-28T00:00:00+02:00</updated><id>http://localhost:4000/posts/welcome-to-solana</id><content type="html" xml:base="http://localhost:4000/posts/2017-03-28-welcome-to-solana">GitHub Pages uses a Markdown engine called &lt;dfn&gt;kramdown&lt;/dfn&gt; for formatting text posts. kramdown is a superset of Markdown, meaning:
+
+1. anything that’s valid Markdown is also valid kramdown, and
+2. it provides and strictly specifies a number of features that are not available in Markdown.[^1] 
+
+Consult the official [kramdown syntax reference][kds] for an exhaustive list of features and how to use them.
+
+---
+
+[^1]:
+    Such as footnotes.
+
+[kd]: http://kramdown.gettalong.org/
+[rd]: https://github.com/davidfstr/rdiscount
+[rc]: https://github.com/vmg/redcarpet
+[kds]: https://kramdown.gettalong.org/syntax.html</content><author><name>Thomas Vanausloos</name></author><category term="intro" /><category term="markdown" /><category term="workflow" /><category term="foss" /><summary type="html">GitHub Pages uses a Markdown engine called kramdown for formatting text posts. kramdown is a superset of Markdown, meaning:</summary></entry><entry><title type="html">Lorem Ipsum Dolor</title><link href="http://localhost:4000/posts/2017-03-27-lorem-ipsum-dolor" rel="alternate" type="text/html" title="Lorem Ipsum Dolor" /><published>2017-03-27T00:00:00+02:00</published><updated>2017-03-27T00:00:00+02:00</updated><id>http://localhost:4000/posts/lorem-ipsum-dolor</id><content type="html" xml:base="http://localhost:4000/posts/2017-03-27-lorem-ipsum-dolor">Mauris ac nunc at nisi congue accumsan
+--------------------------------------
+
+Aliquam iaculis urna aliquam [nisi ornare congue][nisi]:
+
+&gt; #### Pellentesque
+&gt; 
+&gt; Et magna in erat gravida rhoncus a non sem. Vestibulum ante ipsum primis in
+&gt; faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur dignissim:
+&gt;
+&gt; &lt;b&gt;Metus:&lt;/b&gt; `{% raw %}{{ &quot;a eleifend dignissim&quot; | risus }}{% endraw %}`
+&gt; 
+&gt; &lt;b&gt;Aliquet:&lt;/b&gt; `a-eleifend-dignissim`
+
+vel luctus tortor ante non ex. Suspendisse varius justo nisi. Cras at mattis tellus. Etiam sed urna nulla. _Nulla molestie vehicula nulla,_ ut fermentum metus imperdiet ut. Aliquam eget maximus mi, tristique sagittis libero. Quisque in leo et nisi semper eleifend. 
+
+Aliquam scelerisque nisi vitae orci euismod, sit amet laoreet libero egestas:
+
+* Aenean eu quam nulla.
+* Mauris vitae congue magna.
+* Sed a suscipit nulla, &lt;mark&gt;ac semper diam&lt;/mark&gt;.
+
+Interdum et malesuada fames ac ante ipsum
+-----------------------------------------
+
+Praesent egestas [enim et arcu iaculis tempus][enim]. Sed eget semper diam. Nulla sed lorem in nulla egestas eleifend. Sed venenatis et odio eu consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit:
+
+&gt; Aenean imperdiet sed sem non ultrices. Praesent elit ante, ultricies et
+&gt; maximus eu, scelerisque vel dui. In vestibulum sem vel arcu tristique
+&gt; fermentum. In pretium leo orci, ut sollicitudin quam faucibus et. Nulla nulla
+&gt; ipsum, semper id suscipit in, porttitor sit amet orci. Duis suscipit, mauris
+&gt; eu tincidunt dictum, massa arcu mollis nisl, ut suscipit nisi sem at augue.
+
+Nunc vitae pulvinar nunc, sit amet blandit quam. Sed sit amet mattis quam. Nam a placerat nunc. Praesent tempus rutrum sapien, ac volutpat quam consequat quis.
+
+[nisi]: {% link _posts/2017-03-28-welcome-to-solana.md %}
+[enim]: {% post_url 2017-03-28-welcome-to-solana %}</content><author><name>Thomas Vanausloos</name></author><category term="fusce" /><category term="posuere" /><category term="blandit" /><category term="cras" /><summary type="html">Mauris ac nunc at nisi congue accumsan</summary></entry><entry><title type="html">Integer Ultricies, Elit Sit Amet</title><link href="http://localhost:4000/posts/2017-03-26-integer-ultrices-elit-sit-amet" rel="alternate" type="text/html" title="Integer Ultricies, Elit Sit Amet" /><published>2017-03-26T00:00:00+01:00</published><updated>2017-03-26T00:00:00+01:00</updated><id>http://localhost:4000/posts/integer-ultrices-elit-sit-amet</id><content type="html" xml:base="http://localhost:4000/posts/2017-03-26-integer-ultrices-elit-sit-amet">Sed tempus nulla justo aliquam urna. Nulla nec ex in mauris euismod consectetur et vel felis. Curabitur vel hendrerit mauris. Nulla tincidunt massa a tempus commodo. In tempor tristique lectus, vel venenatis ipsum pharetra eu. Nam ac odio congue, dapibus sapien eu, pharetra nisi.
+
+Nullam sagittis mi ut purus porta convallis. Maecenas nec orci vel urna ullamcorper varius ut a sem. Nulla ultricies at odio id gravida. Sed ac volutpat sapien, quis dignissim nisi. Sed id aliquet sem. Fusce aliquet hendrerit dui, eget egestas risus molestie eu. Vestibulum lobortis pretium magna sit amet aliquam.
+
+`Mauris` congue, purus eu cursus finibus
+----------------------------------------
+
+Odio dui pharetra arcu, ut porta mauris ante rhoncus sem. Morbi tortor arcu, auctor vel turpis tempor, sagittis fringilla arcu. Sed tincidunt ex eget dictum eleifend. Morbi a pretium odio. Praesent eget lectus vitae nulla posuere convallis lacinia sit amet nunc. Nullam gravida felis eros, vitae suscipit orci sodales sed. In id massa eget odio venenatis porta. Donec vel pretium elit, et dapibus tortor. 
+
+### Nam euismod semper vehicula
+
+Pellentesque euismod orci quis orci lobortis, et ultricies ex consectetur.[^1] Curabitur sit amet venenatis est, id ullamcorper mauris. Proin a dapibus turpis. Vivamus placerat mauris eget sagittis commodo. Proin consequat, nibh nec ultricies convallis, nulla ex dignissim metus, ut eleifend dolor est id sapien. Nulla ac purus a nibh condimentum porta eget non turpis. Quisque pretium nec urna a tincidunt. Integer dictum dictum dui a laoreet.[^2] Phasellus ut justo id orci imperdiet lobortis id nec felis. Ut dolor risus, imperdiet a laoreet malesuada, aliquet eu massa. Donec sit amet lectus massa.
+
+~~~
+Curabitur quis
+felis magna
+~~~
+
+Vivamus `mollis`, est eu vehicula venenatis,
+
+~~~
+risus Ligula
+  viverra
+  velit
+in dapibus neque
+~~~
+
+mauris non est. Suspendisse ante dolor, tincidunt eu condimentum sed, porttitor a lectus. Suspendisse potenti. Cras orci erat, consectetur ut bibendum at, scelerisque a ligula. Ut fringilla consequat tortor, eu pharetra urna varius in. Praesent sodales neque nec enim euismod, rhoncus facilisis diam egestas. Fusce blandit nisi non odio pulvinar vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
+
+---
+
+[^1]:
+    Nam euismod semper vehicula. Pellentesque euismod orci quis orci lobortis, et ultricies ex consectetur. Curabitur sit amet venenatis est, id ullamcorper mauris. Proin a dapibus turpis. Vivamus placerat mauris eget sagittis commodo. Proin consequat, nibh nec ultricies convallis, nulla ex dignissim metus, ut eleifend dolor est id sapien. Nulla ac purus a nibh condimentum porta eget non turpis. Quisque pretium nec urna a tincidunt. Integer dictum dictum dui a laoreet. Phasellus ut justo id orci imperdiet lobortis id nec felis. Ut dolor risus, imperdiet a laoreet malesuada, aliquet eu massa. Donec sit amet lectus massa. 
+
+    Curabitur quis felis magna. Vivamus mollis, est eu vehicula venenatis, risus ligula viverra velit, in dapibus neque mauris non est. 
+
+[^2]:
+    [Suspendisse ante dolor][sad], tincidunt eu condimentum sed, porttitor a lectus.
+
+[sad]: https://jekyllrb.com/</content><author><name>Thomas Vanausloos</name></author><category term="lacinia" /><category term="posuere" /><category term="odio" /><category term="vestibulum" /><summary type="html">Sed tempus nulla justo aliquam urna. Nulla nec ex in mauris euismod consectetur et vel felis. Curabitur vel hendrerit mauris. Nulla tincidunt massa a tempus commodo. In tempor tristique lectus, vel venenatis ipsum pharetra eu. Nam ac odio congue, dapibus sapien eu, pharetra nisi.</summary></entry></feed>

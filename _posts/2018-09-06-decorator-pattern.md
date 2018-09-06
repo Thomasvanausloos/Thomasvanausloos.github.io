@@ -15,6 +15,7 @@ Example of case 1:
 
 Note that using the interface here is a usage of the strategy pattern...
 
+```java
 public interface Shape{
 
     public void draw();
@@ -44,6 +45,7 @@ public class ShapeDecorator implements Shape{
     }
 
 }
+```
 
 The shapeDecorator will wrap itself around the shape object and store it in its instance field. It will then add functionallity to it's draw() function by calling the draw function of the shape and then adding its own functionallity.
 
@@ -55,6 +57,7 @@ Each layer class will implement the same interface, have a field to store an obj
 
 The interface:
 
+```java
 public interface PricePackage{
 
     public int getPrice();
@@ -70,10 +73,13 @@ public class BasePackage implements PricePackage{
     }
 
 }
+```
+
 Note that the class above is the base layer and thus has no field to store a previous pricePackage! This class will be wrapped by other layers but it wont wrap anything itself.
 
 An example of another layer:
 
+```java
 public class WrapperLayer(){
 
     // Field to hold the previous layers
@@ -104,3 +110,4 @@ public class TestClass{
     }
 
 }
+```

@@ -1,7 +1,7 @@
 ---
 title: Factory patterns
 teaser: In this post we will describe some of the available factory patterns.
-category: Java Development
+category: Design Patterns
 tags: [java]
 ---
 

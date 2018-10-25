@@ -1,6 +1,6 @@
 ---
 title: Facade Pattern
-teaser: The Facade Pattern provides a unified interface to a set of interfaces in a subsytem
+teaser: The Facade Pattern provides a unified interface to a set of interfaces in a subsytems
 category: Design Patterns
 tags: [java]
 ---

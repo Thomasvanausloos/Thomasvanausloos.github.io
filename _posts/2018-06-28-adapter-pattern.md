@@ -1,9 +1,9 @@
 ---
 title: Adapter Pattern
-teaser: The adapter pattern fills the gap between the expected interface and the existing interface.
+teaser: The adapter pattern fills the gap between the expected interface and the existing interface
 category: Design Patterns
 tags: [java]
----
+---a
 
 ## Adapter Pattern
 

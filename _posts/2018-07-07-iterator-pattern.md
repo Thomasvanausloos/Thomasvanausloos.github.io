@@ -1,5 +1,5 @@
 ---
-title: Proxy Pattern
+title: Iterator Pattern
 teaser: The Iterator Pattern provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation
 category: Design Patterns
 tags: [java]

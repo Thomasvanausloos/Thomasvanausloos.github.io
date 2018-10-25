@@ -1,7 +1,6 @@
 ---
 title: Adapter Pattern
 teaser: The adapter pattern fills the gap between the expected interface and the existing interface.
-In java we use the object implementation of this pattern since the class implementation would require multiple inheritance which java does not allow.
 category: Design Patterns
 tags: [java]
 ---

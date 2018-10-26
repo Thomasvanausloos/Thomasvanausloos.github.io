@@ -15,7 +15,7 @@ The Command Pattern encapsulates a request as an object, thereby letting you par
 
 ### Class Diagram:
 
-![alt text](./CommandPatternClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/CommandPatternClassDiagram.jpeg "Class Diagram")
 
 ### Macro Commands:
 

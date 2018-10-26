@@ -21,7 +21,7 @@ of objects uniformly.
 
 ### Class Diagram:
 
-![alt text](./CompositePatternClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/CompositePatternClassDiagram.jpeg "Class Diagram")
 
 ### Example
 

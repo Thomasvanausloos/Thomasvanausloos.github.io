@@ -21,7 +21,7 @@ RMI, or remote method invocation. RMI gives us a way to find object in another h
 The clien helper is called a STUB and the service helper is called a SKELETON.
 (Newer versions of Java dont require an explicit skeleton object, but it is there behind the scenes...)
 
-![alt text](./RMI.jpeg "RMI")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/RMI.jpeg "RMI")
 
 The stub and sceleton take care of talking over the network.
 
@@ -44,7 +44,7 @@ Sometimes the proxy can be responsible for creating and destroying the remote ob
 
 ### Class Diagram:
 
-![alt text](./ProxyPatternClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/ProxyPatternClassDiagram.jpeg "Class Diagram")
 
 ### Variations
 

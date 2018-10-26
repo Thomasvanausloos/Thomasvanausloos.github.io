@@ -43,7 +43,7 @@ public class DinerMenuIterator implements Iterator {
 
 ### Class Diagram:
 
-![alt text](./IteratorPatternClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/IteratorPatternClassDiagram.jpeg "Class Diagram")
 
 ### Design Principle: Single Responsibility
 

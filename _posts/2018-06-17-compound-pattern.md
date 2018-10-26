@@ -35,7 +35,7 @@ Design priciples used:
 
 ### Class Diagram (web mvc => model2):
 
-![alt text](./webMvc.jpeg "Mvc for the web")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/webMvc.jpeg "Mvc for the web")
 
 ### Example
 

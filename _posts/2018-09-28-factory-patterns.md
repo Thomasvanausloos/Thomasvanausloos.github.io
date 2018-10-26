@@ -98,7 +98,7 @@ public class Canvas{
 ```
 
 This way we would only have to change the code in one place, in the `ShapeFactory` class.
-![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/tree/master/knowledge/factory-pattern/simple_factory_pattern_uml_diagram.png "Simple Factory")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/factory-pattern/simple_factory_pattern_uml_diagram.png "Simple Factory")
 
 ### **Advantages**
 
@@ -303,7 +303,7 @@ First option diagram:
 
 Second option diagram:
 
-![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/tree/master/knowledge/factory-pattern/abstractfactory_pattern_uml_diagram.png "Abstract Factory with factory producer")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/factory-pattern/abstractfactory_pattern_uml_diagram.png "Abstract Factory with factory producer")
 
 Here is the example for option two. The factory producer:
 

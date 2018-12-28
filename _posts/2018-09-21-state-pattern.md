@@ -29,10 +29,11 @@ Where we use the stategy pattern as a flexible alternative to subclassing, we us
 
 ![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/StatePatterClassDiagram.jpeg "Class Diagram")
 
+
 ### Example
 
 ```java
-
+//TODO
 ```
 
 ### Bullet Points:

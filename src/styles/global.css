@@ -19,6 +19,9 @@
         /* Custom #FFDE69 */
         --color-primary-yellow: 255 222 105;
 
+        /* TODO: add pink to the theme  */
+        --color-primary-pink: 255 0 129; 
+
         /* Custom #3e3355 */
         --color-text-body: 62 51 85;
         /* Custom #3e3355 */

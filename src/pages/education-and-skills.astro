@@ -1,0 +1,25 @@
+---
+import PageMeta from "../components/PageMeta.astro";
+import { SITE_TITLE } from "../config";
+import PageLayout from "../layouts/PageLayout.astro";
+
+// const projects = await readAll({
+//   directory: "projects",
+//   frontmatterSchema: project,
+// });
+
+// const sortedProjects = projects
+//   .filter((p) => p.frontmatter.draft !== true)
+//   .sort(
+//     (a, b) =>
+//       new Date(b.frontmatter.date).valueOf() -
+//       new Date(a.frontmatter.date).valueOf()
+//   );
+---
+
+<PageLayout>
+  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <span>This page is currently under construction</span>
+  </section>
+</PageLayout>

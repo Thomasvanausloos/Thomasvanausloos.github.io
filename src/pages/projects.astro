@@ -14,52 +14,71 @@ const sortedProjects = projects
   .filter((p) => p.frontmatter.draft !== true)
   .sort(
     (a, b) =>
-      new Date(b.frontmatter.date).valueOf() -
-      new Date(a.frontmatter.date).valueOf()
+      new Date(b.frontmatter.date_from).valueOf() -
+      new Date(a.frontmatter.date_from).valueOf()
   );
 ---
 
 <PageLayout>
   <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
-    <ul>
       {
         sortedProjects.map((project) => {
-          const formattedDate = new Date(
-            project.frontmatter.date
+          const formattedDateFrom = new Date(
+            project.frontmatter.date_from
+          ).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+          const formattedDateUntil = new Date(
+            project.frontmatter.date_until
           ).toLocaleDateString("en-us", {
             year: "numeric",
             month: "short",
             day: "numeric",
           });
           return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
               <div class="title">
-                <a
-                  href={project.frontmatter.url}
-                  target="_blank"
-                  class="unset
+                  <span class="unset
                       transition-[background-size] duration-300 
                       bg-gradient-to-r bg-left-bottom bg-no-repeat
                       bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
                       from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                    "
-                >
-                  <span>{project.frontmatter.title}</span>
-                  <span>
-                    <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square" />
-                  </span>
-                </a>
+                    ">{project.frontmatter.title}</span>
               </div>
-              <div class="text-text-muted text-sm italic pt-1">
-                <time datetime={project.frontmatter.date.toISOString()}>
-                  {formattedDate}
+              <div class="text-text-muted text-xs italic pt-1 mb-3">
+                <time datetime={project.frontmatter.date_from.toISOString()}>
+                  {formattedDateFrom}
+                </time>
+                <span> - </span>
+                <time datetime={project.frontmatter.date_until.toISOString()}>
+                  {formattedDateUntil}
                 </time>
               </div>
-            </li>
+              <div class="mb-3 text-sm">
+                <span>{project.frontmatter.description}</span>
+              </div>
+              <div class="text-sm">
+                <span>Technologiën:</span>
+                <ul>
+                  {
+                    project.frontmatter.technologies.map(technology => 
+                    (
+                      <li>{technology}</li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <br>
           );
         })
       }
-    </ul>
   </section>
 </PageLayout>
+
+<style>
+  .title{
+    font-weight: bold;
+  }
+</style>

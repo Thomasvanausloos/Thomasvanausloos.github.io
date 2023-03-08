@@ -43,5 +43,19 @@ export const blog = z.discriminatedUnion("external", [
 ]);
 
 export const project = baseSchema.extend({
-  url: z.string(),
+  date_from: z.date({
+    required_error: "Required frontmatter missing: date_from",
+    invalid_type_error:
+      "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
+  }),
+  date_until: z.date({
+    required_error: "Required frontmatter missing: date_until",
+    invalid_type_error:
+      "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
+  }),
+  technologies: z.array(z.string()).nonempty(),
+  company: z.string({required_error: "Required frontmatter missing: company"}),
+  company_logo: z.string({required_error: "Required frontmatter missing: company_logo"}),
+  company_url: z.string({required_error: "Required frontmatter missing: company_url"}),
+  description: z.string({required_error: "Required frontmatter missing: description"})
 });

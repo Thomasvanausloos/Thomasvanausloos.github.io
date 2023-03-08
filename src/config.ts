@@ -13,7 +13,7 @@
 //   </Fragment>
 // </PageLayout>
 
-export const SITE_TITLE = "Thomas Vanausloos";
+export const SITE_TITLE = "My personal website'";
 export const SITE_DESCRIPTION =
   "Welcome to my personal website and blog";
 export const TWITTER_HANDLE = "@yourtwitterhandle";

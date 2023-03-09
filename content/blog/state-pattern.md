@@ -27,7 +27,7 @@ Where we use the stategy pattern as a flexible alternative to subclassing, we us
 
 ### Class Diagram:
 
-![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/StatePatterClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/old-jeckyll-blog/knowledge/DesignPatterns/StatePatterClassDiagram.jpeg "Class Diagram")
 
 
 ### Example

@@ -47,7 +47,7 @@ incompatible interfaces.
 
 ### Class Diagram:
 
-![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/AdapterPatternClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/old-jeckyll-blog/knowledge/DesignPatterns/AdapterPatternClassDiagram.jpeg "Class Diagram")
 
 ### Bullet Points:
 

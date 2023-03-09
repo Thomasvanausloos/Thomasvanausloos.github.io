@@ -18,7 +18,7 @@ Facade defines a higher level interface that makes the subsystem easier to use.
 
 ### Class Diagram:
 
-![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/FacadeClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/old-jeckyll-blog/knowledge/DesignPatterns/FacadeClassDiagram.jpeg "Class Diagram")
 
 ### Design Principle: Principle of least knowledge (Law of Demeter)
 

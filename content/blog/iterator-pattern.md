@@ -43,7 +43,7 @@ public class DinerMenuIterator implements Iterator {
 
 ### Class Diagram:
 
-![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/IteratorPatternClassDiagram.jpeg "Class Diagram")
+![alt text](https://github.com/VanausloosThomas/PersonalDevelopment/blob/old-jeckyll-blog/knowledge/DesignPatterns/IteratorPatternClassDiagram.jpeg "Class Diagram")
 
 ### Design Principle: Single Responsibility
 
@@ -56,7 +56,7 @@ A class should have only one reason to change.
 
 ### Nested structures
 
-This is where the [composite pattern](https://github.com/VanausloosThomas/PersonalDevelopment/blob/master/knowledge/DesignPatterns/CompositePattern.md) comes in!
+This is where the [composite pattern](https://github.com/VanausloosThomas/PersonalDevelopment/blob/old-jeckyll-blog/knowledge/DesignPatterns/CompositePattern.md) comes in!
 
 ### Bullet Points:
 

@@ -61,14 +61,15 @@ const sortedProjects = projects
               </div>
               <div class="text-sm">
                 <span>Technologiën:</span>
-                <ul>
-                  {
-                    project.frontmatter.technologies.map(technology => 
-                    (
-                      <li>{technology}</li>
-                    ))
-                  }
-                </ul>
+                <span>{projects.frontmatter.technologies.join(',')}</span>
+                <!--<ul>-->
+                <!--  {-->
+                <!--    project.frontmatter.technologies.map(technology => -->
+                <!--    (-->
+                <!--      <li>{technology}</li>-->
+                <!--    ))-->
+                <!--  }-->
+                <!--</ul>-->
               </div>
               <br>
           );

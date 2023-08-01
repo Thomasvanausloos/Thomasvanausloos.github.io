@@ -1,3 +1,10 @@
+---
+title: Building a second braind
+teaser: My journy into creating a second brain.
+external: false
+date: 2023-06-21
+---
+
 # Building a second brain
 
 A while ago I stumbled upon a youtube video by Ali Adbaal [^1] discussing how to organise your life by making use of a second brain. His video is basically a book summary of the book Building a Second Brain by Tiago Forte. 

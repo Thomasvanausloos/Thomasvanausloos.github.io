@@ -21,5 +21,5 @@ technologies:
     - GitHub
 company: Kunlabora
 company_url: https://www.kunlabora.be/
-company_logo: kunlabora.svg
+company_logo: ./kunlabora.svg
 ---

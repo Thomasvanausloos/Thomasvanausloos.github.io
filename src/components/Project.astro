@@ -18,7 +18,7 @@ const formattedDateUntil = new Date(
 ---
 
 <astro-project>
-  <div class="title" data-project-title>
+  <div class="title hover:cursor-pointer" data-project-title >
     <img src={project.frontmatter.company_logo} />
     <span
       class="unset transition-[background-size] duration-300 bg-gradient-to-r bg-left-bottom bg-no-repeat bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px] from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue"
@@ -39,11 +39,11 @@ const formattedDateUntil = new Date(
       <span>{project.frontmatter.description}</span>
     </div>
     <div class="mb-3 text-sm">
-      <span class="underline">Technologiën:</span>
+      <span class="underline decoration-blue decoration-4" text-decoration-color:#8AE6FB>Technologiën:</span>
       <p class="mt-1">{project.frontmatter.technologies.join(", ")}</p>
     </div>
     <div class="text-sm">
-        <span class="underline">Werkgever:</span>
+        <span class="underline decoration-blue decoration-4">Werkgever:</span>
         <p class="mt-1">{project.frontmatter.company}</p>
     </div>
     <br />
@@ -55,18 +55,15 @@ const formattedDateUntil = new Date(
     constructor() {
       super();
       let shown = false;
-      console.log("constructor");
       const projectTitleElement = this.querySelector("[data-project-title]");
       const extraInfoElement = this.querySelector("[data-project-extra-info]");
       projectTitleElement?.addEventListener("click", () => {
         shown = !shown;
         console.log(shown);
         if (shown) {
-          console.log("showing");
           extraInfoElement?.classList.add("show-extra-info");
           extraInfoElement?.classList.remove("hide-extra-info");
         } else {
-          console.log("hiding");
           extraInfoElement?.classList.remove("show-extra-info");
           extraInfoElement?.classList.add("hide-extra-info");
         }

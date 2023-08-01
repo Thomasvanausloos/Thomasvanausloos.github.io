@@ -1,0 +1,88 @@
+---
+import { timerMessage } from "astro/dist/core/logger/core";
+const { project } = Astro.props;
+const formattedDateFrom = new Date(
+  project.frontmatter.date_from
+).toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+const formattedDateUntil = new Date(
+  project.frontmatter.date_until
+).toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<astro-project>
+  <div class="title" data-project-title>
+    <span
+      class="unset transition-[background-size] duration-300 bg-gradient-to-r bg-left-bottom bg-no-repeat bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px] from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue"
+      >{project.frontmatter.title}</span
+    >
+  </div>
+  <div class="text-text-muted text-xs italic pt-1 mb-3">
+    <time datetime={project.frontmatter.date_from.toISOString()}>
+      {formattedDateFrom}
+    </time>
+    <span> -</span>
+    <time datetime={project.frontmatter.date_until.toISOString()}>
+      {formattedDateUntil}
+    </time>
+  </div>
+  <div class="hide-extra-info" data-project-extra-info>
+    <div class="mb-3 text-sm">
+      <span>{project.frontmatter.description}</span>
+    </div>
+    <div class="text-sm">
+      <span class="underline">Technologiën:</span>
+      <p class="mt-1">{project.frontmatter.technologies.join(", ")}</p>
+    </div>
+    <br />
+  </div>
+</astro-project>
+
+<script>
+  class AstroProject extends HTMLElement {
+    constructor() {
+      super();
+      let shown = false;
+      console.log("constructor");
+      const projectTitleElement = this.querySelector("[data-project-title]");
+      const extraInfoElement = this.querySelector("[data-project-extra-info]");
+      projectTitleElement?.addEventListener("click", () => {
+        shown = !shown;
+        console.log(shown);
+        if (shown) {
+          console.log("showing");
+          extraInfoElement?.classList.add("show-extra-info");
+          extraInfoElement?.classList.remove("hide-extra-info");
+        } else {
+          console.log("hiding");
+          extraInfoElement?.classList.remove("show-extra-info");
+          extraInfoElement?.classList.add("hide-extra-info");
+        }
+      });
+    }
+  }
+  customElements.define("astro-project", AstroProject);
+</script>
+<style>
+  .title {
+    font-weight: bold;
+  }
+
+  .hide-extra-info {
+    transform: translateY(-100%);
+    visibility: hidden;
+    height: 0;
+  }
+  .show-extra-info {
+    transform: translateY(0%);
+    visibility: visible;
+    height: auto;
+  }
+</style>

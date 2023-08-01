@@ -4,6 +4,8 @@ import { project } from "../lib/markdoc/frontmatter.schema";
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import { SITE_TITLE } from "../config";
+import Project from "../components/Project.astro";
+import Card from "../components/Card.astro";
 
 const projects = await readAll({
   directory: "projects",
@@ -22,64 +24,37 @@ const sortedProjects = projects
 <PageLayout>
   <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
-      {
-        sortedProjects.map((project) => {
-          const formattedDateFrom = new Date(
-            project.frontmatter.date_from
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
-          const formattedDateUntil = new Date(
-            project.frontmatter.date_until
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
-          return (
-              <div class="title">
-                  <span class="unset
-                      transition-[background-size] duration-300 
-                      bg-gradient-to-r bg-left-bottom bg-no-repeat
-                      bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                      from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                    ">{project.frontmatter.title}</span>
-              </div>
-              <div class="text-text-muted text-xs italic pt-1 mb-3">
-                <time datetime={project.frontmatter.date_from.toISOString()}>
-                  {formattedDateFrom}
-                </time>
-                <span> - </span>
-                <time datetime={project.frontmatter.date_until.toISOString()}>
-                  {formattedDateUntil}
-                </time>
-              </div>
-              <div class="mb-3 text-sm">
-                <span>{project.frontmatter.description}</span>
-              </div>
-              <div class="text-sm">
-                <span>Technologiën:</span>
-                <span>{projects.frontmatter.technologies.join(',')}</span>
-                <!--<ul>-->
-                <!--  {-->
-                <!--    project.frontmatter.technologies.map(technology => -->
-                <!--    (-->
-                <!--      <li>{technology}</li>-->
-                <!--    ))-->
-                <!--  }-->
-                <!--</ul>-->
-              </div>
-              <br>
-          );
-        })
-      }
+    {
+      sortedProjects.map((project) => (
+        <div class="timeline-marker"></div>
+        <div class="project-card">
+          <Card>
+            <Project project={project} />
+          </Card>
+        </div>
+      ))
+    }
   </section>
 </PageLayout>
 
 <style>
-  .title{
+  .title {
     font-weight: bold;
+  }
+  .project-card {
+    padding: 16px 0 16px 32px;
+    border-left: 1px solid grey;
+  }
+  .timeline-marker{
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: rgb(var(--color-primary-blue));
+    position: relative;
+    left: -7px;
+    top: 32px;
+    margin: 0;
+    border: 1px solid grey
+
   }
 </style>

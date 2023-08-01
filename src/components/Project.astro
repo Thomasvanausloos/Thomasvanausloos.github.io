@@ -19,6 +19,7 @@ const formattedDateUntil = new Date(
 
 <astro-project>
   <div class="title" data-project-title>
+    <img src={project.frontmatter.company_logo} />
     <span
       class="unset transition-[background-size] duration-300 bg-gradient-to-r bg-left-bottom bg-no-repeat bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px] from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue"
       >{project.frontmatter.title}</span
@@ -37,9 +38,13 @@ const formattedDateUntil = new Date(
     <div class="mb-3 text-sm">
       <span>{project.frontmatter.description}</span>
     </div>
-    <div class="text-sm">
+    <div class="mb-3 text-sm">
       <span class="underline">Technologiën:</span>
       <p class="mt-1">{project.frontmatter.technologies.join(", ")}</p>
+    </div>
+    <div class="text-sm">
+        <span class="underline">Werkgever:</span>
+        <p class="mt-1">{project.frontmatter.company}</p>
     </div>
     <br />
   </div>
@@ -73,6 +78,9 @@ const formattedDateUntil = new Date(
 <style>
   .title {
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .hide-extra-info {
@@ -84,5 +92,10 @@ const formattedDateUntil = new Date(
     transform: translateY(0%);
     visibility: visible;
     height: auto;
+  }
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
   }
 </style>

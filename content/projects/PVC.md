@@ -21,5 +21,5 @@ technologies:
     - Event-driven architecture
 company: Cegeka
 company_url: https://https://www.cegeka.com/nl-be/
-company_logo: cegeka.webp
+company_logo: cegeka.png
 ---

@@ -21,11 +21,11 @@ const formattedDateUntil = new Date(
   <div class="title hover:cursor-pointer" data-project-title>
     <img src={project.frontmatter.company_logo} />
     <div class="title-container">
-        <span
+      <span
         class="unset transition-[background-size] duration-300 bg-gradient-to-r bg-left-bottom bg-no-repeat bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px] from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue"
-        >{project.frontmatter.title }</span
-        >
-        <span class="arrow down text-text-muted font-light ml-2"></span>
+        >{project.frontmatter.title}</span
+      >
+      <span class="arrow down text-text-muted font-light ml-2"></span>
     </div>
   </div>
   <div class="margin-left-28 text-sm">
@@ -47,7 +47,7 @@ const formattedDateUntil = new Date(
     <div class="mb-3 text-sm">
       <span
         class="underline decoration-blue decoration-4"
-        text-decoration-color:#8AE6FB>Technologiën:</span
+        text-decoration-color:#8AE6FB>Technologieën:</span
       >
       <p class="mt-1">{project.frontmatter.technologies.join(", ")}</p>
     </div>
@@ -73,13 +73,13 @@ const formattedDateUntil = new Date(
         if (shown) {
           extraInfoElement?.classList.add("show-extra-info");
           extraInfoElement?.classList.remove("hide-extra-info");
-          arrowElement?.classList.remove("down")
-        arrowElement?.classList.add("up")
+          arrowElement?.classList.remove("down");
+          arrowElement?.classList.add("up");
         } else {
-            extraInfoElement?.classList.remove("show-extra-info");
-            extraInfoElement?.classList.add("hide-extra-info");
-            arrowElement?.classList.remove("up")
-            arrowElement?.classList.add("down")
+          extraInfoElement?.classList.remove("show-extra-info");
+          extraInfoElement?.classList.add("hide-extra-info");
+          arrowElement?.classList.remove("up");
+          arrowElement?.classList.add("down");
         }
       });
     }
@@ -87,19 +87,19 @@ const formattedDateUntil = new Date(
   customElements.define("astro-project", AstroProject);
 </script>
 <style>
-    .title-container{
-        display: flex;
-        flex-direction: row;
-    }
+  .title-container {
+    display: flex;
+    flex-direction: row;
+  }
   .arrow::before {
     margin: 0;
     content: "»";
     /* content: ">"; */
   }
-  .down{
+  .down {
     rotate: 90deg;
   }
-  .up{
+  .up {
     rotate: -90deg;
   }
   .margin-left-28 {

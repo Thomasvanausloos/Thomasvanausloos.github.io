@@ -1,5 +1,6 @@
 ---
-title: Partsmaster (Explorewood voor Toyota)
+title: Partsmaster
+client: Explorewood voor Toyota
 description: Single-source-of-truth binnen de data-foundation waar info over parts kan worden opgeslagen en worden opgehaald.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

@@ -1,5 +1,6 @@
 ---
-title: Slim in de stad (Stad Leuven)
+title: Slim in de stad
+client: Stad Leuven
 description: Uitbreiding van interne applicatie zodat deze kan gebruikt worden door verschillende sociale organisaties, alsook de applicatie omvormen zodat deze volwaardig bruikbaar is op mobiele apparaten.
 date: 2022-01-01
 url: https://design-system-boilerplate.netlify.app

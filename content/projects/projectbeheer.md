@@ -1,5 +1,6 @@
 ---
-title: Projectbeheer (VDAB)
+title: Projectbeheer
+client: VDAB
 description: Tool voor het beheren van projecten en bijbehorende budgetten van zowel de VDAB als hun partners.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

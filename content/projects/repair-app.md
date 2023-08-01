@@ -1,5 +1,6 @@
 ---
-title: Repair App (K.U.Leuven)
+title: Repair App
+client: K.U.Leuven
 description: Samenwerking met de KU Leuven om op basis van image-recognition herstellingen aan grote huishoudtoestellen te kunnen uitvoeren en te loggen.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

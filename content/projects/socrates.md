@@ -1,5 +1,6 @@
 ---
-title: Socrates Assistant (Digipolis)
+title: Socrates Assistant
+client: Digipolis
 description: Project in opdracht van de cultuurdienst van Antwerpen om gebruikers culturele aanbevelingen te kunnen geven op basis van hun cultuur profiel en vorige interacties met de applicatie.
 date: 2022-01-01
 url: https://design-system-boilerplate.netlify.app

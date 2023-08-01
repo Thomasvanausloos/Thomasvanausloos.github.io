@@ -1,5 +1,6 @@
 ---
-title: PARKOUR (Agentschap Opgroeien)
+title: PARKOUR
+client: Agentschap Opgroeien
 description: PARKOUR is een mobiele app waarin de begeleiding van de jongere centraal staat. De jongere bepaald zelf hoe zijn traject er uit ziet, welke doelen er gesteld worden en wie er deel uit maakt van zijn/haar team.
 date: 2023-06-01
 url: https://www.opgroeien.be/over-opgroeien/projecten/parkour

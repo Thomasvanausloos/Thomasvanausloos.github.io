@@ -1,5 +1,6 @@
 ---
-title: Gastlector (UCLL informatica opleiding)
+title: Gastlector
+client: UCLL informatica opleiding
 description: Vervanging van de vaste lector gedurende een volledig trimester voor de vakken Web Development 3 en Web Development 4. Enkele onderwerpen die hier aan bod kwamen zijn o.a. Algemene web security, MVC-patroon, Single Page Applications, ...
 date: 2022-01-01
 url: https://design-system-boilerplate.netlify.app

@@ -1,5 +1,6 @@
 ---
-title: 3D Measurement Assistant (Argon)
+title: 3D Measurement Assistant
+client: Argon
 description: 3DMA is een applicatie die enerzijds meetingenieurs in staat stelt om complexe meet-workflows samen te stellen door het combineren van verschillende generieke bouwblokken. Anderzijds begeleidt de applicatie de operator op de vloer doorheen het meetproces door informatie, instructies, rapporten en meetfeedback te tonen.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

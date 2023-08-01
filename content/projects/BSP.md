@@ -1,5 +1,6 @@
 ---
-title: Broker Service Platform (Ensur)
+title: Broker Service Platform
+client: Ensur
 description: Applicatie die het de verzekeringsnemer mogelijk maakt een duidelijk overzicht te krijgen van al zijn verzekeringen, verzekerde items, schadegevallen en verzekeringscontracten.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

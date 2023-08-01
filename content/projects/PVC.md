@@ -1,5 +1,6 @@
 ---
-title: Prestaties en Vergoedingen voor Competentieversterking (VDAB)
+title: Prestaties en Vergoedingen voor Competentieversterking
+client: VDAB
 description: Berekeningsmotor voor lonen, vergoedingen en bijdragen voor o.a. IBO- en wijkwerkcontracten.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

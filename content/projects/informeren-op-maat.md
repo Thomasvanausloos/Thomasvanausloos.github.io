@@ -1,5 +1,6 @@
 ---
-title: Informeren op Maat (Digitaal Vlaanderen)
+title: Informeren op Maat
+client: Digitaal Vlaanderen
 description: In het kader van Informeren op Maat project hebben we een nieuwe productrepository gemaakt (IPDC V3) waarop we heel wat use-cases kunnen bouwen. Huidige use-cases zijn Single Digital Gateway (om producten te laten doorstromen naar YourEurope), Rechtenverkenner en Productencatalogus.
 date: 2022-02-13
 url: https://design-system-boilerplate.netlify.app

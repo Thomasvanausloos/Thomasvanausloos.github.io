@@ -1,5 +1,6 @@
 ---
-title: Undercover (Ensur)
+title: Undercover
+client: Ensur
 description: Applicatie waarin de verzekeringsnemer een overzicht krijgt van hoe goed hij kwalitatief verzekerd is, extra aanbevelingen kan krijgen om zijn/haar verzekering te verbeteren en makelaars leads ontvangen voor cross- en upselling.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

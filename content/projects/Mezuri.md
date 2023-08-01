@@ -1,5 +1,6 @@
 ---
-title: Mezuri (t’Lampeke & Stad Leuven)
+title: Mezuri
+client: t’Lampeke & Stad Leuven
 description: Applicatie ter ondersteuning van gezinscoaches bij het begeleiden van kwetsbare gezinnen. De gezinscoach kan door minimale registraties gedurende het begeleidingstraject waardevolle inzichten, aangereikt door machinelearning, vergaren.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

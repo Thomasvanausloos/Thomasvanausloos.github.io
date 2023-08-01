@@ -1,5 +1,6 @@
 ---
-title: ProDisco (Explorewood voor Toyota)
+title: ProDisco
+client: Explorewood voor Toyota
 description: Applicatie die toelaat om discounts aan te maken voor zowel de verkoop van een wagen, als voor de after-sales diensten.
 date: 2022-06-01
 url: https://design-system-boilerplate.netlify.app

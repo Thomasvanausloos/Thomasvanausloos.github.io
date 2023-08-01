@@ -1,5 +1,6 @@
 ---
-title: Pcfruit (EVA)
+title: Pcfruit
+client: EVA
 description: Vernieuwing van een administratieve web-toepassing met als doel het dagelijkse werk van fruittelers een pak eenvoudiger te maken (plannen van opdrachten, berekenen van hoeveelheid te gebruiken product, trekken van rapporten, ...).
 date: 2022-01-01
 url: https://design-system-boilerplate.netlify.app

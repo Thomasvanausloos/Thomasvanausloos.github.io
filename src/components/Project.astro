@@ -18,14 +18,20 @@ const formattedDateUntil = new Date(
 ---
 
 <astro-project>
-  <div class="title hover:cursor-pointer" data-project-title >
+  <div class="title hover:cursor-pointer" data-project-title>
     <img src={project.frontmatter.company_logo} />
-    <span
-      class="unset transition-[background-size] duration-300 bg-gradient-to-r bg-left-bottom bg-no-repeat bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px] from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue"
-      >{project.frontmatter.title}</span
-    >
+    <div class="title-container">
+        <span
+        class="unset transition-[background-size] duration-300 bg-gradient-to-r bg-left-bottom bg-no-repeat bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px] from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue"
+        >{project.frontmatter.title }</span
+        >
+        <span class="arrow down text-text-muted font-light ml-2"></span>
+    </div>
   </div>
-  <div class="text-text-muted text-xs italic pt-1 mb-3">
+  <div class="margin-left-28 text-sm">
+    <span>{project.frontmatter.client}</span>
+  </div>
+  <div class="text-text-muted text-xs pt-1 mb-3 margin-left-28">
     <time datetime={project.frontmatter.date_from.toISOString()}>
       {formattedDateFrom}
     </time>
@@ -34,17 +40,20 @@ const formattedDateUntil = new Date(
       {formattedDateUntil}
     </time>
   </div>
-  <div class="hide-extra-info" data-project-extra-info>
+  <div class="hide-extra-info margin-left-28" data-project-extra-info>
     <div class="mb-3 text-sm">
       <span>{project.frontmatter.description}</span>
     </div>
     <div class="mb-3 text-sm">
-      <span class="underline decoration-blue decoration-4" text-decoration-color:#8AE6FB>Technologiën:</span>
+      <span
+        class="underline decoration-blue decoration-4"
+        text-decoration-color:#8AE6FB>Technologiën:</span
+      >
       <p class="mt-1">{project.frontmatter.technologies.join(", ")}</p>
     </div>
     <div class="text-sm">
-        <span class="underline decoration-blue decoration-4">Werkgever:</span>
-        <p class="mt-1">{project.frontmatter.company}</p>
+      <span class="underline decoration-blue decoration-4">Werkgever:</span>
+      <p class="mt-1">{project.frontmatter.company}</p>
     </div>
     <br />
   </div>
@@ -57,15 +66,20 @@ const formattedDateUntil = new Date(
       let shown = false;
       const projectTitleElement = this.querySelector("[data-project-title]");
       const extraInfoElement = this.querySelector("[data-project-extra-info]");
+      const arrowElement = this.querySelector(".arrow");
       projectTitleElement?.addEventListener("click", () => {
         shown = !shown;
         console.log(shown);
         if (shown) {
           extraInfoElement?.classList.add("show-extra-info");
           extraInfoElement?.classList.remove("hide-extra-info");
+          arrowElement?.classList.remove("down")
+        arrowElement?.classList.add("up")
         } else {
-          extraInfoElement?.classList.remove("show-extra-info");
-          extraInfoElement?.classList.add("hide-extra-info");
+            extraInfoElement?.classList.remove("show-extra-info");
+            extraInfoElement?.classList.add("hide-extra-info");
+            arrowElement?.classList.remove("up")
+            arrowElement?.classList.add("down")
         }
       });
     }
@@ -73,6 +87,25 @@ const formattedDateUntil = new Date(
   customElements.define("astro-project", AstroProject);
 </script>
 <style>
+    .title-container{
+        display: flex;
+        flex-direction: row;
+    }
+  .arrow::before {
+    margin: 0;
+    content: "»";
+    /* content: ">"; */
+  }
+  .down{
+    rotate: 90deg;
+  }
+  .up{
+    rotate: -90deg;
+  }
+  .margin-left-28 {
+    margin-left: 28px;
+  }
+
   .title {
     font-weight: bold;
     display: flex;

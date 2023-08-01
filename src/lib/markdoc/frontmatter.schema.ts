@@ -57,5 +57,6 @@ export const project = baseSchema.extend({
   company: z.string({required_error: "Required frontmatter missing: company"}),
   company_logo: z.string({required_error: "Required frontmatter missing: company_logo"}),
   company_url: z.string({required_error: "Required frontmatter missing: company_url"}),
+  client: z.string({required_error: "Required frontmatter missing: client"}),
   description: z.string({required_error: "Required frontmatter missing: description"})
 });

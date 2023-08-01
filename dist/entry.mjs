@@ -1,16 +1,11 @@
 import { escape } from 'html-escaper';
-/* empty css                                  *//* empty css                                */import path from 'path';
+/* empty css                                */import path from 'path';
 import matter from 'gray-matter';
 import fs from 'fs/promises';
 import { globby } from 'globby';
 import Markdoc from '@markdoc/markdoc';
 import { z } from 'zod';
-/* empty css                                    */import rss from '@astrojs/rss';
-import MarkdownIt from 'markdown-it';
-import Prism from 'prismjs';
-import loadLanguages from 'prismjs/components/index.js';
-/* empty css                                  */import slugify from 'slugify';
-
+/* empty css                                    */
 function baseCreateComponent(cb, moduleId) {
   cb.isAstroComponentFactory = true;
   cb.moduleId = moduleId;
@@ -66,13 +61,6 @@ function createAstro(filePathname, _site, projectRootStr) {
 }
 
 const escapeHTML = escape;
-class HTMLBytes extends Uint8Array {
-}
-Object.defineProperty(HTMLBytes.prototype, Symbol.toStringTag, {
-  get() {
-    return "HTMLBytes";
-  }
-});
 class HTMLString extends String {
   get [Symbol.toStringTag]() {
     return "HTMLString";
@@ -89,38 +77,6 @@ const markHTMLString = (value) => {
 };
 function isHTMLString(value) {
   return Object.prototype.toString.call(value) === "[object HTMLString]";
-}
-function markHTMLBytes(bytes) {
-  return new HTMLBytes(bytes);
-}
-async function* unescapeChunksAsync(iterable) {
-  for await (const chunk of iterable) {
-    yield unescapeHTML(chunk);
-  }
-}
-function* unescapeChunks(iterable) {
-  for (const chunk of iterable) {
-    yield unescapeHTML(chunk);
-  }
-}
-function unescapeHTML(str) {
-  if (!!str && typeof str === "object") {
-    if (str instanceof Uint8Array) {
-      return markHTMLBytes(str);
-    } else if (str instanceof Response && str.body) {
-      const body = str.body;
-      return unescapeChunksAsync(body);
-    } else if (typeof str.then === "function") {
-      return Promise.resolve(str).then((value) => {
-        return unescapeHTML(value);
-      });
-    } else if (Symbol.iterator in str) {
-      return unescapeChunks(str);
-    } else if (Symbol.asyncIterator in str) {
-      return unescapeChunksAsync(str);
-    }
-  }
-  return markHTMLString(str);
 }
 
 var idle_prebuilt_default = `(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));`;
@@ -203,11 +159,11 @@ function isPromise(value) {
   return !!value && typeof value === "object" && typeof value.then === "function";
 }
 
-var _a$4;
+var _a$2;
 const renderTemplateResultSym = Symbol.for("astro.renderTemplateResult");
 class RenderTemplateResult {
   constructor(htmlParts, expressions) {
-    this[_a$4] = true;
+    this[_a$2] = true;
     this.htmlParts = htmlParts;
     this.error = void 0;
     this.expressions = expressions.map((expression) => {
@@ -222,7 +178,7 @@ class RenderTemplateResult {
       return expression;
     });
   }
-  get [(_a$4 = renderTemplateResultSym, Symbol.toStringTag)]() {
+  get [(_a$2 = renderTemplateResultSym, Symbol.toStringTag)]() {
     return "AstroComponent";
   }
   async *[Symbol.asyncIterator]() {
@@ -781,11 +737,11 @@ async function generateHydrateScript(scriptOptions, metadata) {
   return island;
 }
 
-var _a$3;
+var _a$1;
 const astroComponentInstanceSym = Symbol.for("astro.componentInstance");
 class AstroComponentInstance {
   constructor(result, props, slots, factory) {
-    this[_a$3] = true;
+    this[_a$1] = true;
     this.result = result;
     this.props = props;
     this.factory = factory;
@@ -813,7 +769,7 @@ class AstroComponentInstance {
     }
   }
 }
-_a$3 = astroComponentInstanceSym;
+_a$1 = astroComponentInstanceSym;
 function validateComponentProps(props, displayName) {
   if (props != null) {
     for (const prop of Object.keys(props)) {
@@ -1792,13 +1748,12 @@ var server_default = {
 const SITE_TITLE = "My personal website'";
 const SITE_DESCRIPTION = "Welcome to my personal website and blog";
 const TWITTER_HANDLE = "@yourtwitterhandle";
-const MY_NAME = "Thomas Vanausloos";
 const BASE_URL = new URL("https://thomas.vanausloos.com/");
 const SITE_URL = BASE_URL.origin;
 
-const $$Astro$v = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Intro.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$h = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Intro.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Intro = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$v, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$h, $$props, $$slots);
   Astro2.self = $$Intro;
   return renderTemplate`${maybeRenderHead($$result)}<section class="mb-8">
   <div class="mb-6">
@@ -1868,62 +1823,10 @@ function getPageMeta({
     twitter
   };
 }
-function getBlogPostMeta({
-  title: pageTitle,
-  description,
-  canonicalUrl,
-  pageUrl,
-  authorName,
-  publishDate,
-  ogImageAbsoluteUrl,
-  ogImageAltText,
-  ogImageWidth,
-  ogImageHeight,
-  siteOwnerTwitterHandle,
-  contentAuthorTwitterHandle
-}) {
-  if (!pageTitle) {
-    throw Error("title is required for page SEO");
-  }
-  if (ogImageAbsoluteUrl && !ogImageAltText) {
-    ogImageAltText = `Preview image for ${pageTitle}`;
-  }
-  const meta = {
-    title: pageTitle,
-    description,
-    canonicalUrl
-  };
-  const og = {
-    title: pageTitle,
-    description,
-    type: "article",
-    url: pageUrl,
-    author: authorName,
-    publishDate,
-    image: ogImageAbsoluteUrl,
-    imageAlt: ogImageAltText,
-    imageWidth: ogImageWidth ? String(ogImageWidth) : void 0,
-    imageHeight: ogImageHeight ? String(ogImageHeight) : void 0
-  };
-  const twitter = {
-    title: pageTitle,
-    description,
-    card: "summary_large_image",
-    site: siteOwnerTwitterHandle,
-    creator: contentAuthorTwitterHandle || siteOwnerTwitterHandle,
-    image: ogImageAbsoluteUrl,
-    imageAlt: ogImageAltText
-  };
-  return {
-    meta,
-    og,
-    twitter
-  };
-}
 
-const $$Astro$u = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/PageMeta.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$g = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/PageMeta.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$PageMeta = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$u, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$g, $$props, $$slots);
   Astro2.self = $$PageMeta;
   const { title, description } = Astro2.props;
   const { meta, og, twitter } = getPageMeta({
@@ -1963,9 +1866,9 @@ ${twitter.imageAlt && renderTemplate`<meta property="twitter:image:alt"${addAttr
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/PageMeta.astro");
 
-const $$Astro$t = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/GoogleFont.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$f = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/GoogleFont.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$GoogleFont = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$t, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$f, $$props, $$slots);
   Astro2.self = $$GoogleFont;
   return renderTemplate`<!-- 
     We don't want to use <link /> to load fonts from Google CDN 
@@ -2007,23 +1910,23 @@ const $$GoogleFont = createComponent(async ($$result, $$props, $$slots) => {
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/GoogleFont.astro");
 
-const $$Astro$s = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/FontAwesome.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$e = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/FontAwesome.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$FontAwesome = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$s, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$e, $$props, $$slots);
   Astro2.self = $$FontAwesome;
   return renderTemplate`${renderComponent($$result, "Fragment", Fragment, {}, { "default": () => renderTemplate`<link href="/fontawesome/css/fontawesome.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/brands.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/solid.min.css" rel="stylesheet">` })}
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/FontAwesome.astro");
 
-var __freeze$2 = Object.freeze;
-var __defProp$2 = Object.defineProperty;
-var __template$2 = (cooked, raw) => __freeze$2(__defProp$2(cooked, "raw", { value: __freeze$2(raw || cooked.slice()) }));
-var _a$2;
-const $$Astro$r = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/ThemeScript.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(raw || cooked.slice()) }));
+var _a;
+const $$Astro$d = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/ThemeScript.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$ThemeScript = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$r, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$d, $$props, $$slots);
   Astro2.self = $$ThemeScript;
-  return renderTemplate(_a$2 || (_a$2 = __template$2([`<script>
+  return renderTemplate(_a || (_a = __template([`<script>
   // figure out user's preferred theme and set it as html class for tailwind before paint
   (function () {
     if (typeof window !== "undefined") {
@@ -2047,9 +1950,9 @@ const $$ThemeScript = createComponent(async ($$result, $$props, $$slots) => {
 `])));
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/ThemeScript.astro");
 
-const $$Astro$q = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/Favicon.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$c = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/Favicon.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Favicon = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$q, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$c, $$props, $$slots);
   Astro2.self = $$Favicon;
   return renderTemplate`<meta name="theme-color" content="#ffffff">
 <!-- 
@@ -2060,9 +1963,9 @@ const $$Favicon = createComponent(async ($$result, $$props, $$slots) => {
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/Favicon.astro");
 
-const $$Astro$p = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/HeaderLink.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$b = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/HeaderLink.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$HeaderLink = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$p, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$b, $$props, $$slots);
   Astro2.self = $$HeaderLink;
   const { href, class: className, ...props } = Astro2.props;
   const path = Astro2.url.pathname.replace(/\/$/, "");
@@ -2076,9 +1979,9 @@ const $$HeaderLink = createComponent(async ($$result, $$props, $$slots) => {
   ], "class:list")}${spreadAttributes(props)}>${renderSlot($$result, $$slots["default"])}</a>`;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/HeaderLink.astro");
 
-const $$Astro$o = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Nav.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$a = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Nav.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Nav = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$o, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$a, $$props, $$slots);
   Astro2.self = $$Nav;
   return renderTemplate`${renderComponent($$result, "Fragment", Fragment, {}, { "default": () => renderTemplate`${maybeRenderHead($$result)}<nav class="hidden md:inline astro-SQR6GYAH">
     <section class="text-text-bold astro-SQR6GYAH">
@@ -2116,9 +2019,9 @@ ${maybeRenderHead($$result)}
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Nav.astro");
 
-const $$Astro$n = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/DarkModeToggle.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$9 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/DarkModeToggle.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$DarkModeToggle = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$n, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
   Astro2.self = $$DarkModeToggle;
   return renderTemplate`${renderComponent($$result, "mode-toggle", "mode-toggle", { "class": "flex astro-6NZUI7XU" }, { "default": () => renderTemplate`
   ${maybeRenderHead($$result)}<button class="justify-self-end bg-black dark:bg-white ml-4 inline-flex h-6 w-11 items-center rounded-full astro-6NZUI7XU" id="mode-toggle" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state=""><span class="sr-only astro-6NZUI7XU">Toggle dark mode</span><span id="mode-circle" class="light inline-block h-4 w-4 rounded-full bg-gradient-to-tr invisible astro-6NZUI7XU"><span class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0] astro-6NZUI7XU"></span>
@@ -2131,9 +2034,9 @@ ${maybeRenderHead($$result)}
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/DarkModeToggle.astro");
 
-const $$Astro$m = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Header.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$8 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Header.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Header = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$m, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
   Astro2.self = $$Header;
   return renderTemplate`${maybeRenderHead($$result)}<header class=" astro-WOQZYYQJ">
   <a class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial] astro-WOQZYYQJ" href="#main">
@@ -2155,9 +2058,9 @@ const $$Header = createComponent(async ($$result, $$props, $$slots) => {
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Header.astro");
 
-const $$Astro$l = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Footer.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$7 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Footer.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Footer = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$l, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
   Astro2.self = $$Footer;
   return renderTemplate`${maybeRenderHead($$result)}<footer class="text-xs leading-[1.75] mt-4 astro-42B47LZM">
   <div class="astro-42B47LZM">
@@ -2172,9 +2075,9 @@ const $$Footer = createComponent(async ($$result, $$props, $$slots) => {
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Footer.astro");
 
-const $$Astro$k = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/PageLayout.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$6 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/PageLayout.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$PageLayout = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$k, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
   Astro2.self = $$PageLayout;
   return renderTemplate`<html class="theme-bubblegum astro-VSPRTZL7" lang="en">
   <head>
@@ -2200,40 +2103,40 @@ const $$PageLayout = createComponent(async ($$result, $$props, $$slots) => {
 </html>`;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/PageLayout.astro");
 
-const $$Astro$j = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/index.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$5 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/index.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$j, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
   Astro2.self = $$Index;
   return renderTemplate`${renderComponent($$result, "PageLayout", $$PageLayout, {}, { "main": () => renderTemplate`${renderComponent($$result, "Fragment", Fragment, { "slot": "main" }, { "default": () => renderTemplate`${renderComponent($$result, "Intro", $$Intro, {})}` })}`, "meta": () => renderTemplate`${renderComponent($$result, "PageMeta", $$PageMeta, { "title": `${SITE_TITLE} | Thomas Vanausloos`, "slot": "meta" })}` })}`;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/index.astro");
 
-const $$file$4 = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/index.astro";
-const $$url$4 = "";
+const $$file$3 = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/index.astro";
+const $$url$3 = "";
 
 const _page0 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: $$Index,
-  file: $$file$4,
-  url: $$url$4
+  file: $$file$3,
+  url: $$url$3
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const $$Astro$i = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/education-and-skills.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$4 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/education-and-skills.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$EducationAndSkills = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$i, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
   Astro2.self = $$EducationAndSkills;
   return renderTemplate`${renderComponent($$result, "PageLayout", $$PageLayout, {}, { "main": () => renderTemplate`${maybeRenderHead($$result)}<section>
     <span>This page is currently under construction</span>
   </section>`, "meta": () => renderTemplate`${renderComponent($$result, "PageMeta", $$PageMeta, { "title": `Projects | ${SITE_TITLE}`, "slot": "meta" })}` })}`;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/education-and-skills.astro");
 
-const $$file$3 = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/education-and-skills.astro";
-const $$url$3 = "/education-and-skills";
+const $$file$2 = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/education-and-skills.astro";
+const $$url$2 = "/education-and-skills";
 
 const _page1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: $$EducationAndSkills,
-  file: $$file$3,
-  url: $$url$3
+  file: $$file$2,
+  url: $$url$2
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const { nodes, Tag } = Markdoc;
@@ -2388,17 +2291,6 @@ async function read({
     frontmatter: validatedFrontmatter
   };
 }
-async function readOne({
-  directory,
-  slug,
-  frontmatterSchema: schema
-}) {
-  const filepath = path.join(contentDirectory, directory, `${slug}.md`);
-  return read({
-    filepath,
-    schema
-  });
-}
 async function readAll({
   directory,
   frontmatterSchema: schema
@@ -2451,9 +2343,9 @@ const project = baseSchema.extend({
   description: z.string({ required_error: "Required frontmatter missing: description" })
 });
 
-const $$Astro$h = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Project.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$3 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Project.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Project = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$h, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$Project;
   const { project } = Astro2.props;
   const formattedDateFrom = new Date(
@@ -2499,9 +2391,9 @@ ${maybeRenderHead($$result)}
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Project.astro");
 
-const $$Astro$g = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Card.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$2 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Card.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Card = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$g, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$Card;
   return renderTemplate`${maybeRenderHead($$result)}<div class="card astro-UL5WBFK7">
   ${renderSlot($$result, $$slots["default"])}
@@ -2510,9 +2402,9 @@ ${maybeRenderHead($$result)}
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Card.astro");
 
-const $$Astro$f = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/projects.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
+const $$Astro$1 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/projects.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
 const $$Projects = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$f, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Projects;
   const projects = await readAll({
     directory: "projects",
@@ -2530,591 +2422,12 @@ const $$Projects = createComponent(async ($$result, $$props, $$slots) => {
 `;
 }, "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/projects.astro");
 
-const $$file$2 = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/projects.astro";
-const $$url$2 = "/projects";
+const $$file$1 = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/projects.astro";
+const $$url$1 = "/projects";
 
 const _page2 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: $$Projects,
-  file: $$file$2,
-  url: $$url$2
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const get = async () => {
-  const posts = await readAll({
-    directory: "blog",
-    frontmatterSchema: blog
-  });
-  const sortedPosts = posts.filter((p) => p.frontmatter.draft !== true).sort(
-    (a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
-  );
-  let baseUrl = SITE_URL;
-  baseUrl = baseUrl.replace(/\/+$/g, "");
-  const rssItems = sortedPosts.map(({ frontmatter, slug }) => {
-    if (frontmatter.external) {
-      const title2 = frontmatter.title;
-      const pubDate2 = frontmatter.date;
-      const link2 = frontmatter.url;
-      return {
-        title: title2,
-        pubDate: pubDate2,
-        link: link2
-      };
-    }
-    const title = frontmatter.title;
-    const pubDate = frontmatter.date;
-    const description = frontmatter.description;
-    const link = `${baseUrl}/blog/${slug}`;
-    return {
-      title,
-      pubDate,
-      description,
-      link
-    };
-  });
-  return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    site: baseUrl,
-    items: rssItems
-  });
-};
-
-const _page3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  get
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const { Tag: MarkdocTag } = Markdoc;
-const { escapeHtml } = MarkdownIt().utils;
-class Node {
-  node;
-  tag;
-  props;
-  children;
-  components;
-  constructor(n, components2) {
-    if (!n) {
-      throw new Error("Missing arg: n");
-    }
-    this.node = n;
-    this.components = components2;
-    let children = this.node?.children;
-    if (typeof this.node === "string" || typeof this.node === "number") {
-      children = escapeHtml(String(this.node));
-    } else if (this.node === null || typeof this.node !== "object" || !MarkdocTag.isTag(this.node)) {
-      children = "";
-    }
-    this.children = children;
-    let tag = this.node?.name;
-    let props = this.node?.attributes;
-    if (typeof this.node?.name === "string" && typeof components2 === "object" && Object.hasOwn(components2, this.node?.name)) {
-      tag = components2[this.node?.name].Component;
-      props = {
-        ...props,
-        ...components2[this.node?.name].props,
-        children: this.children
-      };
-    } else if (typeof this.node?.name === "string") {
-      tag = this.node?.name;
-      props = { ...this.node?.attributes };
-    }
-    this.tag = tag;
-    this.props = props;
-  }
-  validateElement() {
-    if (typeof this.node?.name === "string" && this.node.name.charAt(0).toLowerCase() !== this.node.name.charAt(0) && typeof components === "object" && !Object.hasOwn(this.components, this.node.name)) {
-      throw new Error(`No renderer provided for element: ${this.node.name}`);
-    }
-  }
-  hasChildren() {
-    return Array.isArray(this.node?.children);
-  }
-  shouldRenderChildren() {
-    return !Array.isArray(this.node) && (typeof this.node === "string" || typeof this.node === "number" || this.node === null || typeof this.node !== "object" || !MarkdocTag.isTag(this.node));
-  }
-  shouldRenderSelf() {
-    return Array.isArray(this.node);
-  }
-  shouldRenderTag() {
-    return !!this.tag;
-  }
-}
-
-function addAstro(Prism) {
-  if (Prism.languages.astro) {
-    return;
-  }
-  let scriptLang;
-  if (Prism.languages.typescript) {
-    scriptLang = "typescript";
-  } else {
-    scriptLang = "javascript";
-    console.warn(
-      "Prism TypeScript language not loaded, Astro scripts will be treated as JavaScript."
-    );
-  }
-  let script = Prism.util.clone(Prism.languages[scriptLang]);
-  let space = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source;
-  let braces = /(?:\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])*\})/.source;
-  let spread = /(?:\{<S>*\.{3}(?:[^{}]|<BRACES>)*\})/.source;
-  function re(source, flags) {
-    source = source.replace(/<S>/g, function() {
-      return space;
-    }).replace(/<BRACES>/g, function() {
-      return braces;
-    }).replace(/<SPREAD>/g, function() {
-      return spread;
-    });
-    return RegExp(source, flags);
-  }
-  spread = re(spread).source;
-  Prism.languages.astro = Prism.languages.extend("markup", script);
-  Prism.languages.astro.tag.pattern = re(
-    /<\/?(?:[\w.:-]+(?:<S>+(?:[\w.:$-]+(?:=(?:"(?:\\[^]|[^\\"])*"|'(?:\\[^]|[^\\'])*'|[^\s{'"/>=]+|<BRACES>))?|<SPREAD>))*<S>*\/?)?>/.source
-  );
-  Prism.languages.astro.tag.inside["tag"].pattern = /^<\/?[^\s>\/]*/i;
-  Prism.languages.astro.tag.inside["attr-value"].pattern = /=(?!\{)(?:"(?:\\[^]|[^\\"])*"|'(?:\\[^]|[^\\'])*'|[^\s'">]+)/i;
-  Prism.languages.astro.tag.inside["tag"].inside["class-name"] = /^[A-Z]\w*(?:\.[A-Z]\w*)*$/;
-  Prism.languages.astro.tag.inside["comment"] = script["comment"];
-  Prism.languages.insertBefore(
-    "inside",
-    "attr-name",
-    {
-      spread: {
-        pattern: re(/<SPREAD>/.source),
-        inside: Prism.languages.astro
-      }
-    },
-    Prism.languages.astro.tag
-  );
-  Prism.languages.insertBefore(
-    "inside",
-    "special-attr",
-    {
-      script: {
-        pattern: re(/=<BRACES>/.source),
-        inside: {
-          "script-punctuation": {
-            pattern: /^=(?={)/,
-            alias: "punctuation"
-          },
-          rest: Prism.languages.astro
-        },
-        alias: `language-${scriptLang}`
-      }
-    },
-    Prism.languages.astro.tag
-  );
-  let stringifyToken = function(token) {
-    if (!token) {
-      return "";
-    }
-    if (typeof token === "string") {
-      return token;
-    }
-    if (typeof token.content === "string") {
-      return token.content;
-    }
-    return token.content.map(stringifyToken).join("");
-  };
-  let walkTokens = function(tokens) {
-    let openedTags = [];
-    for (let i = 0; i < tokens.length; i++) {
-      let token = tokens[i];
-      if (token.type === "style") {
-        return;
-      }
-      let notTagNorBrace = false;
-      if (typeof token !== "string") {
-        if (token.type === "tag" && token.content[0] && token.content[0].type === "tag") {
-          if (token.content[0].content[0].content === "</") {
-            if (openedTags.length > 0 && openedTags[openedTags.length - 1].tagName === stringifyToken(token.content[0].content[1])) {
-              openedTags.pop();
-            }
-          } else {
-            if (token.content[token.content.length - 1].content === "/>") ; else {
-              openedTags.push({
-                tagName: stringifyToken(token.content[0].content[1]),
-                openedBraces: 0
-              });
-            }
-          }
-        } else if (openedTags.length > 0 && token.type === "punctuation" && token.content === "{") {
-          openedTags[openedTags.length - 1].openedBraces++;
-        } else if (openedTags.length > 0 && openedTags[openedTags.length - 1].openedBraces > 0 && token.type === "punctuation" && token.content === "}") {
-          openedTags[openedTags.length - 1].openedBraces--;
-        } else {
-          notTagNorBrace = true;
-        }
-      }
-      if (notTagNorBrace || typeof token === "string") {
-        if (openedTags.length > 0 && openedTags[openedTags.length - 1].openedBraces === 0) {
-          let plainText = stringifyToken(token);
-          if (i < tokens.length - 1 && (typeof tokens[i + 1] === "string" || tokens[i + 1].type === "plain-text")) {
-            plainText += stringifyToken(tokens[i + 1]);
-            tokens.splice(i + 1, 1);
-          }
-          if (i > 0 && (typeof tokens[i - 1] === "string" || tokens[i - 1].type === "plain-text")) {
-            plainText = stringifyToken(tokens[i - 1]) + plainText;
-            tokens.splice(i - 1, 1);
-            i--;
-          }
-          tokens[i] = new Prism.Token("plain-text", plainText, void 0, plainText);
-        }
-      }
-      if (token.content && typeof token.content !== "string") {
-        walkTokens(token.content);
-      }
-    }
-  };
-  Prism.hooks.add("after-tokenize", function(env) {
-    if (env.language !== "astro") {
-      return;
-    }
-    walkTokens(env.tokens);
-  });
-}
-
-const languageMap = /* @__PURE__ */ new Map([["ts", "typescript"]]);
-function runHighlighterWithAstro(lang, code) {
-  if (!lang) {
-    lang = "plaintext";
-  }
-  let classLanguage = `language-${lang}`;
-  const ensureLoaded = (language) => {
-    if (language && !Prism.languages[language]) {
-      loadLanguages([language]);
-    }
-  };
-  if (languageMap.has(lang)) {
-    ensureLoaded(languageMap.get(lang));
-  } else if (lang === "astro") {
-    ensureLoaded("typescript");
-    addAstro(Prism);
-  } else {
-    ensureLoaded("markup-templating");
-    ensureLoaded(lang);
-  }
-  if (lang && !Prism.languages[lang]) {
-    console.warn(`Unable to load the language: ${lang}`);
-  }
-  const grammar = Prism.languages[lang];
-  let html = code;
-  if (grammar) {
-    html = Prism.highlight(code, grammar, lang);
-  }
-  return { classLanguage, html };
-}
-
-const $$Astro$e = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/@astrojs/prism/Prism.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$Prism = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$e, $$props, $$slots);
-  Astro2.self = $$Prism;
-  const { class: className, lang, code } = Astro2.props;
-  const { classLanguage, html } = runHighlighterWithAstro(lang, code);
-  return renderTemplate`${maybeRenderHead($$result)}<pre${addAttribute([className, classLanguage].filter(Boolean).join(" "), "class")}><code${addAttribute(classLanguage, "class")}>${unescapeHTML(html)}</code></pre>`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/@astrojs/prism/Prism.astro");
-
-const $$Astro$d = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/astro-markdoc-renderer/src/CodeBlock.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$CodeBlock$1 = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$d, $$props, $$slots);
-  Astro2.self = $$CodeBlock$1;
-  const { language, content } = Astro2.props;
-  return renderTemplate`${renderComponent($$result, "Prism", $$Prism, { "lang": language, "code": content })}
-
-`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/astro-markdoc-renderer/src/CodeBlock.astro");
-
-const $$Astro$c = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/astro-markdoc-renderer/src/Code.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$Code = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$c, $$props, $$slots);
-  Astro2.self = $$Code;
-  return renderTemplate`${maybeRenderHead($$result)}<code>${renderSlot($$result, $$slots["default"])}</code>`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/astro-markdoc-renderer/src/Code.astro");
-
-const $$Astro$b = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/astro-markdoc-renderer/src/MarkdocRenderer.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$MarkdocRenderer = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$b, $$props, $$slots);
-  Astro2.self = $$MarkdocRenderer;
-  const { content, components: customComponents } = Astro2.props;
-  const defaultComponents = {
-    CodeBlock: {
-      Component: $$CodeBlock$1,
-      props: {}
-    },
-    code: {
-      Component: $$Code,
-      props: {}
-    }
-  };
-  const components = { ...defaultComponents, ...customComponents };
-  if (!content) {
-    throw new Error("Missing prop: content");
-  }
-  const node = new Node(content, components);
-  node.validateElement();
-  const Tag = node.tag;
-  const props = node.props;
-  const children = node.children;
-  return renderTemplate`${node.shouldRenderChildren() ? renderTemplate`${renderComponent($$result, "Fragment", Fragment, {}, { "default": () => renderTemplate`${unescapeHTML(children)}` })}` : node.shouldRenderSelf() ? content.map((element) => {
-    return renderTemplate`${renderComponent($$result, "Astro.self", Astro2.self, { "content": element, "components": components })}`;
-  }) : node.shouldRenderTag() ? renderTemplate`${renderComponent($$result, "Tag", Tag, { ...props }, { "default": () => renderTemplate`${node.hasChildren() ? renderTemplate`${renderComponent($$result, "Astro.self", Astro2.self, { "content": children, "components": components })}` : null}` })}` : null}`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/node_modules/astro-markdoc-renderer/src/MarkdocRenderer.astro");
-
-const $$Astro$a = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/YouTubeEmbed.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$YouTubeEmbed = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$a, $$props, $$slots);
-  Astro2.self = $$YouTubeEmbed;
-  const { url, label } = Astro2.props;
-  return renderTemplate`${maybeRenderHead($$result)}<div>
-  <iframe class="aspect-video w-full"${addAttribute(url, "src")}${addAttribute(label, "title")} frame-border="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-  </iframe>
-</div>`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/YouTubeEmbed.astro");
-
-var __freeze$1 = Object.freeze;
-var __defProp$1 = Object.defineProperty;
-var __template$1 = (cooked, raw) => __freeze$1(__defProp$1(cooked, "raw", { value: __freeze$1(raw || cooked.slice()) }));
-var _a$1;
-const $$Astro$9 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/TweetEmbed.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$TweetEmbed = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
-  Astro2.self = $$TweetEmbed;
-  const { url } = Astro2.props;
-  return renderTemplate(_a$1 || (_a$1 = __template$1(["", '<div class="relative not-prose flex flex-col items-center justify-center">\n  <blockquote class="twitter-tweet" data-conversation="none" data-theme="light" data-lang="en" data-dnt="true">\n    <a class="unset absolute left-0 top-0"', '>Loading embedded tweet...</a>\n  </blockquote>\n</div>\n<script async defer src="https://platform.twitter.com/widgets.js" charset="utf-8"><\/script>'])), maybeRenderHead($$result), addAttribute(url, "href"));
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/TweetEmbed.astro");
-
-var __freeze = Object.freeze;
-var __defProp = Object.defineProperty;
-var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(raw || cooked.slice()) }));
-var _a;
-const $$Astro$8 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/CodePenEmbed.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$CodePenEmbed = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
-  Astro2.self = $$CodePenEmbed;
-  const { url, title } = Astro2.props;
-  return renderTemplate(_a || (_a = __template(["", '<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="eYJqjgq" data-user="ruphaa" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">\n  <span><a', ">", '</a></span>\n</p>\n<script async defer src="https://cpwebassets.codepen.io/assets/embed/ei.js"><\/script>'])), maybeRenderHead($$result), addAttribute(url, "href"), title);
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/CodePenEmbed.astro");
-
-const $$Astro$7 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/GitHubGistEmbed.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$GitHubGistEmbed = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
-  Astro2.self = $$GitHubGistEmbed;
-  const { id } = Astro2.props;
-  return renderTemplate`${maybeRenderHead($$result)}<iframe class="gist-iframe" width="100%" style="border:0;"${addAttribute(`gist-${id}`, "id")}${addAttribute(id, "data-id")}></iframe>
-${maybeRenderHead($$result)}`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/GitHubGistEmbed.astro");
-
-const $$Astro$6 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/CodeBlock.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$CodeBlock = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
-  Astro2.self = $$CodeBlock;
-  const { language, content } = Astro2.props;
-  return renderTemplate`${renderComponent($$result, "Prism", $$Prism, { "lang": language, "code": content })}
-
-`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/CodeBlock.astro");
-
-const $$Astro$5 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Heading.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$Heading = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
-  Astro2.self = $$Heading;
-  const { level, children } = Astro2.props;
-  const headingText = children.length && typeof children[0] === "string" ? children[0] : "";
-  const id = slugify(headingText.toLowerCase());
-  let Tag = "h1";
-  if (level === 2) {
-    Tag = "h2";
-  } else if (level === 3) {
-    Tag = "h3";
-  } else if (level === 4) {
-    Tag = "h4";
-  } else if (level === 5) {
-    Tag = "h5";
-  } else if (level === 6) {
-    Tag = "h6";
-  }
-  const shouldAddBeforePseudoStyle = ["h1", "h2"].includes(Tag);
-  return renderTemplate`${renderComponent($$result, "Tag", Tag, { "id": id, "class": "group flex" }, { "default": () => renderTemplate`${shouldAddBeforePseudoStyle ? renderTemplate`${maybeRenderHead($$result)}<span class="
-      pl-6 relative block leading-[150%]
-      before:absolute before:content-[''] before:w-2 before:h-full before:top-0 before:left-0 before:bg-primary-green
-    ">
-      ${children}
-    </span>` : renderTemplate`<span class="relative block leading-[150%]">
-      ${children}
-    </span>`}` })}`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Heading.astro");
-
-const $$Astro$4 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Renderer.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$Renderer = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
-  Astro2.self = $$Renderer;
-  const { content } = Astro2.props;
-  const components = {
-    Heading: {
-      Component: $$Heading,
-      props: {}
-    },
-    CodeBlock: {
-      Component: $$CodeBlock,
-      props: {}
-    },
-    YouTubeEmbed: {
-      Component: $$YouTubeEmbed,
-      props: {}
-    },
-    TweetEmbed: {
-      Component: $$TweetEmbed,
-      props: {}
-    },
-    CodePenEmbed: {
-      Component: $$CodePenEmbed,
-      props: {}
-    },
-    GitHubGistEmbed: {
-      Component: $$GitHubGistEmbed,
-      props: {}
-    }
-  };
-  return renderTemplate`${renderComponent($$result, "MarkdocRenderer", $$MarkdocRenderer, { "content": content, "components": components })}`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/Renderer.astro");
-
-const $$Astro$3 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/components/BlogPostMeta.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$BlogPostMeta = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
-  Astro2.self = $$BlogPostMeta;
-  const {
-    title,
-    description,
-    publishDate,
-    pagePath,
-    ogImageAbsoluteUrl,
-    ogImageAltText,
-    ogImageWidth,
-    ogImageHeight
-  } = Astro2.props;
-  const { meta, og, twitter } = getBlogPostMeta({
-    title: title || SITE_TITLE,
-    description: description || SITE_DESCRIPTION,
-    pageUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : void 0,
-    authorName: MY_NAME,
-    publishDate,
-    ogImageAbsoluteUrl,
-    ogImageAltText,
-    ogImageWidth,
-    ogImageHeight,
-    siteOwnerTwitterHandle: TWITTER_HANDLE,
-    contentAuthorTwitterHandle: TWITTER_HANDLE
-  });
-  return renderTemplate`<!-- Primary Meta Tags --><title>${meta.title}</title>
-<meta name="title"${addAttribute(meta.title, "content")}>
-${meta.description && renderTemplate`<meta name="description"${addAttribute(meta.description, "content")}>`}
-${meta.canonicalUrl && renderTemplate`<link rel="canonical"${addAttribute(meta.canonicalUrl, "href")}>`}
-
-<!-- Open Graph / Facebook -->
-${og.title && renderTemplate`<meta property="og:title"${addAttribute(og.title, "content")}>`}
-${og.description && renderTemplate`<meta property="og:description"${addAttribute(og.description, "content")}>`}
-${og.type && renderTemplate`<meta property="og:type"${addAttribute(og.type, "content")}>`}
-${og.url && renderTemplate`<meta property="og:url"${addAttribute(og.url, "content")}>`}
-${og.author && renderTemplate`<meta property="article:author"${addAttribute(og.author, "content")}>`}
-${og.publishDate && renderTemplate`<meta property="article:published_time"${addAttribute(og.publishDate, "content")}>`}
-${og.image && renderTemplate`<meta property="og:image"${addAttribute(og.image, "content")}>`}
-${og.imageAlt && renderTemplate`<meta property="og:image:alt"${addAttribute(og.imageAlt, "content")}>`}
-${og.imageWidth && renderTemplate`<meta property="og:image:width"${addAttribute(og.imageWidth, "content")}>`}
-${og.imageHeight && renderTemplate`<meta property="og:image:height"${addAttribute(og.imageHeight, "content")}>`}
-
-<!-- Twitter -->
-${twitter.title && renderTemplate`<meta property="twitter:title"${addAttribute(twitter.title, "content")}>`}
-${twitter.description && renderTemplate`<meta property="twitter:description"${addAttribute(twitter.description, "content")}>`}
-${twitter.site && renderTemplate`<meta property="twitter:site"${addAttribute(twitter.site, "content")}>`}
-${twitter.creator && renderTemplate`<meta property="twitter:creator"${addAttribute(twitter.creator, "content")}>`}
-<meta property="twitter:card" content="summary_large_image">
-${twitter.image && renderTemplate`<meta property="twitter:image"${addAttribute(twitter.image, "content")}>`}
-${twitter.imageAlt && renderTemplate`<meta property="twitter:image:alt"${addAttribute(twitter.imageAlt, "content")}>`}
-<!-- {twitter.url && <meta property="twitter:url" content={twitter.url} />} -->
-`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/components/BlogPostMeta.astro");
-
-const $$Astro$2 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/ContentLayout.astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-const $$ContentLayout = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
-  Astro2.self = $$ContentLayout;
-  const { title, date } = Astro2.props;
-  const formattedDate = new Date(date).toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "short",
-    day: "numeric"
-  });
-  return renderTemplate`<html class="theme-bubblegum astro-DXXYQV35" lang="en">
-  <head>
-    <!-- Global Metadata -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="generator" content="Blogster">
-    ${renderComponent($$result, "Favicon", $$Favicon, { "class": "astro-DXXYQV35" })}
-    ${renderSlot($$result, $$slots["meta"])}
-    ${renderComponent($$result, "GoogleFont", $$GoogleFont, { "class": "astro-DXXYQV35" })}
-    ${renderComponent($$result, "ThemeScript", $$ThemeScript, { "class": "astro-DXXYQV35" })}
-    ${renderComponent($$result, "FontAwesome", $$FontAwesome, { "class": "astro-DXXYQV35" })}
-  ${renderHead($$result)}</head>
-
-  <body class="max-w-3xl mx-auto min-h-screen px-6 sm:px-8 astro-DXXYQV35">
-    ${renderComponent($$result, "Header", $$Header, { "class": "astro-DXXYQV35" })}
-    <main id="main" class="astro-DXXYQV35">
-      <section class="blog-post prose max-w-none prose-bubblegum astro-DXXYQV35">
-        <h1 class="m-0 mb-[0.25em] astro-DXXYQV35">
-          <span class="
-              pl-6 relative block leading-[150%]
-              after:absolute after:content-[''] after:w-2 after:h-full after:top-0 after:left-0 after:bg-primary-green
-             astro-DXXYQV35">
-            ${title}
-          </span>
-        </h1>
-        <time class="block mb-[2em] text-text-muted astro-DXXYQV35">${formattedDate}</time>
-        ${renderSlot($$result, $$slots["content"])}
-      </section>
-    </main>
-    ${renderComponent($$result, "Footer", $$Footer, { "class": "astro-DXXYQV35" })}
-    
-  </body>
-</html>`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/layouts/ContentLayout.astro");
-
-const $$Astro$1 = createAstro("/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/blog/[slug].astro", "https://thomas.vanausloos.com/", "file:///Users/thomas/Documents/Projects/PersonalWebsite/");
-async function getStaticPaths() {
-  const posts = await readAll({
-    directory: "blog",
-    frontmatterSchema: blog
-  });
-  const filteredPosts = posts.filter((p) => p.frontmatter.draft !== true).filter(({ frontmatter }) => !frontmatter.external);
-  return filteredPosts.map((post) => {
-    return { params: { slug: post.slug } };
-  });
-}
-const $$slug = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
-  Astro2.self = $$slug;
-  const { slug } = Astro2.params;
-  if (typeof slug !== "string") {
-    throw Error(`slug should be string. Received: ${slug}`);
-  }
-  const { content, frontmatter } = await readOne({
-    directory: "blog",
-    slug,
-    frontmatterSchema: blog
-  });
-  const ogImageAbsoluteUrl = frontmatter.external !== true && frontmatter.ogImagePath ? new URL(frontmatter.ogImagePath, SITE_URL).toString() : void 0;
-  return renderTemplate`${renderComponent($$result, "ContentLayout", $$ContentLayout, { "title": frontmatter.title, "date": frontmatter.date }, { "content": () => renderTemplate`${renderComponent($$result, "Renderer", $$Renderer, { "content": content, "slot": "content" })}`, "meta": () => renderTemplate`${renderComponent($$result, "BlogPostMeta", $$BlogPostMeta, { "title": frontmatter.title, "description": frontmatter.external ? void 0 : frontmatter.description, "publishDate": frontmatter.date.toISOString(), "pagePath": `/blog/${slug}`, "ogImageAbsoluteUrl": ogImageAbsoluteUrl, "slot": "meta" })}` })}`;
-}, "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/blog/[slug].astro");
-
-const $$file$1 = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/blog/[slug].astro";
-const $$url$1 = "/blog/[slug]";
-
-const _page4 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  getStaticPaths,
-  default: $$slug,
   file: $$file$1,
   url: $$url$1
 }, Symbol.toStringTag, { value: 'Module' }));
@@ -3175,14 +2488,14 @@ const $$Blog = createComponent(async ($$result, $$props, $$slots) => {
 const $$file = "/Users/thomas/Documents/Projects/PersonalWebsite/src/pages/blog.astro";
 const $$url = "/blog";
 
-const _page5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _page3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: $$Blog,
   file: $$file,
   url: $$url
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const pageMap = new Map([["src/pages/index.astro", _page0],["src/pages/education-and-skills.astro", _page1],["src/pages/projects.astro", _page2],["src/pages/rss.xml.ts", _page3],["src/pages/blog/[slug].astro", _page4],["src/pages/blog.astro", _page5],]);
+const pageMap = new Map([["src/pages/index.astro", _page0],["src/pages/education-and-skills.astro", _page1],["src/pages/projects.astro", _page2],["src/pages/blog.astro", _page3],]);
 const renderers = [Object.assign({"name":"astro:jsx","serverEntrypoint":"astro/jsx/server.js","jsxImportSource":"astro"}, { ssr: server_default }),];
 
 export { pageMap, renderers };

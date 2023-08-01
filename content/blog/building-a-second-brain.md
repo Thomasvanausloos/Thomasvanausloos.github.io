@@ -1,8 +1,9 @@
 ---
-title: Building a second braind
-teaser: My journy into creating a second brain.
+title: Building a second brain
+teaser: My journy into creating a second brain
 external: false
 date: 2023-06-21
+draft: true
 ---
 
 # Building a second brain

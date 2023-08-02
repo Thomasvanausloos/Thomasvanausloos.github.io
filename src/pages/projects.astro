@@ -26,8 +26,8 @@ const sortedProjects = projects
   <section slot="main">
     {
       sortedProjects.map((project) => (
-        <div class="timeline-marker"></div>
         <div class="project-card">
+          <div class="timeline-marker"></div>
           <Card>
             <Project project={project} />
           </Card>
@@ -43,7 +43,7 @@ const sortedProjects = projects
   }
   .project-card {
     padding: 16px 0 16px 32px;
-    border-left: 1px solid grey;
+    border-left: 2px solid lightgray ;
   }
   .timeline-marker{
     width: 16px;
@@ -51,8 +51,8 @@ const sortedProjects = projects
     border-radius: 8px;
     background-color: rgb(var(--color-primary-yellow));
     position: relative;
-    left: -7px;
-    top: 32px;
+    left: -41px;
+    top: 40px;
     margin: 0;
     border: 1px solid grey
 

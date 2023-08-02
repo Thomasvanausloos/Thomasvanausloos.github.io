@@ -3,14 +3,14 @@ import { timerMessage } from "astro/dist/core/logger/core";
 const { project } = Astro.props;
 const formattedDateFrom = new Date(
   project.frontmatter.date_from
-).toLocaleDateString("en-us", {
+).toLocaleDateString("nl-BE", {
   year: "numeric",
   month: "short",
   day: "numeric",
 });
 const formattedDateUntil = new Date(
   project.frontmatter.date_until
-).toLocaleDateString("en-us", {
+).toLocaleDateString("nl-BE", {
   year: "numeric",
   month: "short",
   day: "numeric",

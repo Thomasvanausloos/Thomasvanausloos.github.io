@@ -25,14 +25,27 @@ const sortedProjects = projects
   <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
     {
-      sortedProjects.map((project) => (
-        <div class="project-card">
-          <div class="timeline-marker"></div>
-          <Card>
-            <Project project={project} />
-          </Card>
-        </div>
-      ))
+      sortedProjects.map((project) => {
+        const formattedDateUntil = new Date(
+          project.frontmatter.date_until
+        ).toLocaleDateString("nl-BE", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+
+        });
+        return (
+          <div class="project-card">
+            <div class="timeline-marker-container">
+              <div class="timeline-marker" />
+              <time class="text-text-muted text-xs">{formattedDateUntil}</p>
+                </div>
+            <Card>
+              <Project project={project} />
+            </Card>
+          </div>
+        );
+      })
     }
   </section>
 </PageLayout>
@@ -43,18 +56,28 @@ const sortedProjects = projects
   }
   .project-card {
     padding: 16px 0 16px 32px;
-    border-left: 2px solid lightgray ;
+    border-left: 2px solid lightgray;
   }
-  .timeline-marker{
+  .timeline-marker-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    left: -41px;
+    top: -12px;
+  }
+  time{
+    margin-left: 32px
+  }
+  .timeline-marker {
     width: 16px;
     height: 16px;
     border-radius: 8px;
     background-color: rgb(var(--color-primary-yellow));
-    position: relative;
+    /* position: relative;
     left: -41px;
-    top: 40px;
+    top: -12px; */
     margin: 0;
-    border: 1px solid grey
-
+    border: 1px solid grey;
   }
 </style>

@@ -15,7 +15,7 @@
 
 export const SITE_TITLE = "My personal website'";
 export const SITE_DESCRIPTION =
-  "Welcome to my personal website and blog";
+  "Welcome to my personal website";
 export const TWITTER_HANDLE = "@yourtwitterhandle";
 export const MY_NAME = "Thomas Vanausloos";
 

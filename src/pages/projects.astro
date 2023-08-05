@@ -6,6 +6,7 @@ import PageMeta from "../components/PageMeta.astro";
 import { SITE_TITLE } from "../config";
 import Project from "../components/Project.astro";
 import Card from "../components/Card.astro";
+import PageTitle from "../components/PageTitle.astro"
 
 const projects = await readAll({
   directory: "projects",
@@ -22,8 +23,9 @@ const sortedProjects = projects
 ---
 
 <PageLayout>
-  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
+  <PageMeta title={`Projecten | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
+    <PageTitle title="Projecten" subtitle="Een overzicht van mijn projecten. Klik open voor een samenvatting en meer informatie over gebruikte technologieën."></PageTitle>
     {
       sortedProjects.map((project) => {
         const formattedDateUntil = new Date(

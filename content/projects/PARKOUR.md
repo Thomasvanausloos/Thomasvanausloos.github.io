@@ -15,6 +15,8 @@ technologies:
     - Ionic
     - Capacitor
     - NestJs
+    - Turborepo
+    - Gradle
     - Docker
     - AWS
     - Terraform

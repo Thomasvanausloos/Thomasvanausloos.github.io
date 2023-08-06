@@ -1,7 +1,7 @@
 ---
 title: PARKOUR
 client: Agentschap Opgroeien
-description: PARKOUR is een mobiele app waarin de begeleiding van de jongere centraal staat. De jongere bepaald zelf hoe zijn traject er uit ziet, welke doelen er gesteld worden en wie er deel uit maakt van zijn/haar team.
+description: PARKOUR is een mobiele app waarin de begeleiding van de jongere centraal staat. De jongere bepaalt zelf hoe zijn traject er uit ziet, welke doelen er gesteld worden en wie er deel uit maakt van zijn/haar team.
 date: 2023-06-01
 url: https://www.opgroeien.be/over-opgroeien/projecten/parkour
 date_from: 2023-06-01
@@ -23,5 +23,5 @@ technologies:
     - Hexagonal Architecture
 company: Kunlabora
 company_url: https://www.kunlabora.be/
-company_logo: ../kunlabora.svg
+company_logo: ../employers/kunlabora.svg
 ---

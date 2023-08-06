@@ -1,0 +1,30 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { courses } from "../lib/markdoc/frontmatter.schema";
+import SubTitle from "./SubTitle.astro";
+
+const allCourses = await readAll({
+  directory: "courses",
+  frontmatterSchema: courses,
+});
+
+const sortedCourses = allCourses
+  .sort((a, b) => a.frontmatter.order - b.frontmatter.order)
+  .map((sortedPages) => sortedPages.frontmatter);
+---
+<SubTitle subtitle="Cursussen" />
+<ul>
+  {
+    sortedCourses.map((course) => {
+      return (
+        <li>
+          <span class="font-semibold">{course.title}</span>
+          <span class="text-text-muted text-sm"> | </span>
+          <span class="text-text-muted text-sm"> {course.institute}</span>
+          <span class="text-text-muted text-sm"> | </span>
+          <span class="text-text-muted text-sm"> {course.year}</span>
+        </li>
+      );
+    })
+  }
+</ul>

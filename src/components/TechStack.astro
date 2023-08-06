@@ -1,0 +1,64 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { techStack } from "../lib/markdoc/frontmatter.schema";
+import SubTitle from "./SubTitle.astro";
+
+const technologies = await readAll({
+  directory: "tech-stack",
+  frontmatterSchema: techStack,
+});
+
+const sortedtechnologies = technologies.sort(
+  (a, b) => a.frontmatter.order - b.frontmatter.order
+);
+
+---
+<SubTitle subtitle="Tech stack" />
+<div class="flex flex-row gap-4 flex-wrap mb-8 mt-6">
+    {
+      sortedtechnologies
+        .filter(
+          (technologies) => technologies.frontmatter.category === "frontend"
+        )
+        .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
+        .map((tech) => {
+          return <img src={tech.logoUrl} class="w-16 h-16" />;
+        })
+    }
+  </div>
+  <div class="flex flex-row gap-4 flex-wrap mb-8">
+    {
+      sortedtechnologies
+        .filter(
+          (technologies) => technologies.frontmatter.category === "backend"
+        )
+        .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
+        .map((tech) => {
+          return <img src={tech.logoUrl} class="w-16 h-16" />;
+        })
+    }
+  </div>
+  <div class="flex flex-row gap-4 flex-wrap mb-8">
+    {
+      sortedtechnologies
+        .filter(
+          (technologies) => technologies.frontmatter.category === "infra"
+        )
+        .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
+        .map((tech) => {
+          return <img src={tech.logoUrl} class="w-16 h-16" />;
+        })
+    }
+  </div>
+  <div class="flex flex-row gap-4 flex-wrap mb-6">
+    {
+      sortedtechnologies
+        .filter(
+          (technologies) => technologies.frontmatter.category === "databases"
+        )
+        .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
+        .map((tech) => {
+          return <img src={tech.logoUrl} class="w-16 h-16" />;
+        })
+    }
+  </div>

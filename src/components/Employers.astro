@@ -1,0 +1,45 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { employer } from "../lib/markdoc/frontmatter.schema";
+import SubTitle from "./SubTitle.astro";
+
+const employers = await readAll({
+  directory: "employers",
+  frontmatterSchema: employer,
+});
+
+const sortedEmployers = employers.sort(
+  (a, b) => b.frontmatter.date_from - a.frontmatter.date_from
+);
+---
+<SubTitle subtitle="Werkgevers" />
+<ul>
+  {
+    sortedEmployers.map((employer) => {
+      const formattedDateUntil = new Date(
+        employer.frontmatter.date_until
+      ).toLocaleDateString("nl-BE", {
+        year: "numeric",
+        month: "short",
+      });
+      const formattedDateFrom = new Date(
+        employer.frontmatter.date_from
+      ).toLocaleDateString("nl-BE", {
+        year: "numeric",
+        month: "short",
+      });
+      return (
+        <li>
+          <p class="font-semibold">
+            {employer.frontmatter.company}
+            <span class="text-text-muted font-light text-sm"> | </span>
+            <span class="text-text-muted font-light text-sm capitalize">{formattedDateFrom}</span>
+            <span class="text-text-muted font-light text-sm"> - </span>
+            <span class="text-text-muted font-light text-sm capitalize">{formattedDateUntil}</span>
+          </p>
+          <p class="text-sm">{employer.frontmatter.description}</p>
+        </li>
+      );
+    })
+  }
+</ul>

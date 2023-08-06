@@ -1,0 +1,19 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { aboutMe } from "../lib/markdoc/frontmatter.schema";
+import SubTitle from "./SubTitle.astro";
+
+const files = await readAll({
+  directory: "about-me",
+  frontmatterSchema: aboutMe,
+});
+
+const paragraphs = files.flatMap(file => file.frontmatter.paragraphs)
+
+---
+<SubTitle subtitle="Over mij" />
+{
+    paragraphs.map(info => (<p class="mt-3">{info}</p>))
+}
+
+  

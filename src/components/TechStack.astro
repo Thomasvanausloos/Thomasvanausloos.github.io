@@ -2,6 +2,7 @@
 import { readAll } from "../lib/markdoc/read";
 import { techStack } from "../lib/markdoc/frontmatter.schema";
 import SubTitle from "./SubTitle.astro";
+import TechnologyLogo from "../components/TechnologyLogo.astro"
 
 const technologies = await readAll({
   directory: "tech-stack",
@@ -14,7 +15,7 @@ const sortedtechnologies = technologies.sort(
 
 ---
 <SubTitle subtitle="Tech stack" />
-<div class="flex flex-row gap-4 flex-wrap mb-8 mt-6">
+<div class="flex flex-row gap-6 flex-wrap mb-8 mt-6">
     {
       sortedtechnologies
         .filter(
@@ -22,11 +23,11 @@ const sortedtechnologies = technologies.sort(
         )
         .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
         .map((tech) => {
-          return <img src={tech.logoUrl} class="w-16 h-16" />;
+          return <TechnologyLogo technology={tech}></TechnologyLogo>;
         })
     }
   </div>
-  <div class="flex flex-row gap-4 flex-wrap mb-8">
+  <div class="flex flex-row gap-6 flex-wrap mb-8">
     {
       sortedtechnologies
         .filter(
@@ -34,11 +35,11 @@ const sortedtechnologies = technologies.sort(
         )
         .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
         .map((tech) => {
-          return <img src={tech.logoUrl} class="w-16 h-16" />;
+          return <TechnologyLogo technology={tech}></TechnologyLogo>;
         })
     }
   </div>
-  <div class="flex flex-row gap-4 flex-wrap mb-8">
+  <div class="flex flex-row gap-6 flex-wrap mb-8">
     {
       sortedtechnologies
         .filter(
@@ -46,11 +47,11 @@ const sortedtechnologies = technologies.sort(
         )
         .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
         .map((tech) => {
-          return <img src={tech.logoUrl} class="w-16 h-16" />;
+          return <TechnologyLogo technology={tech}></TechnologyLogo>;
         })
     }
   </div>
-  <div class="flex flex-row gap-4 flex-wrap mb-6">
+  <div class="flex flex-row gap-6 flex-wrap mb-6">
     {
       sortedtechnologies
         .filter(
@@ -58,7 +59,7 @@ const sortedtechnologies = technologies.sort(
         )
         .flatMap((frontendTech) => frontendTech.frontmatter.technologies)
         .map((tech) => {
-          return <img src={tech.logoUrl} class="w-16 h-16" />;
+          return <TechnologyLogo technology={tech}></TechnologyLogo>;
         })
     }
   </div>

@@ -1,5 +1,4 @@
 ---
-import { timerMessage } from "astro/dist/core/logger/core";
 const { project } = Astro.props;
 const formattedDateFrom = new Date(
   project.frontmatter.date_from
@@ -31,15 +30,6 @@ const formattedDateUntil = new Date(
   <div class="margin-left-28 text-text-muted text-xs">
     <span>{project.frontmatter.client}</span>
   </div>
-  <!-- <div class="text-text-muted text-xs pt-1 mb-3 margin-left-28">
-    <time datetime={project.frontmatter.date_from.toISOString()}>
-      {formattedDateFrom}
-    </time>
-    <span> -</span>
-    <time datetime={project.frontmatter.date_until.toISOString()}>
-      {formattedDateUntil}
-    </time>
-  </div> -->
   <div class="hide-extra-info margin-left-28 mt-3" data-project-extra-info>
     <div class="mb-3 text-sm">
       <span>{project.frontmatter.description}</span>

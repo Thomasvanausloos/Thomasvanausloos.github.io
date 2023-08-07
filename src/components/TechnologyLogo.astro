@@ -1,0 +1,41 @@
+---
+const { technology } = Astro.props;
+---
+
+<technology-logo class="hover:scale-150 transition-transform">
+  <img
+    src={technology.logoUrl}
+    class="w-16 h-16 "
+    data-technology-logo
+  />
+  <p class="hide-description pt-0 text-center text-[12px] text-slate-500" data-technology-description>{technology.description}</p>
+</technology-logo>
+<script>
+  export class TechnologyLogo extends HTMLElement {
+    constructor() {
+      super();
+      const logo = this.querySelector("[data-technology-logo]");
+      const description = this.querySelector("[data-technology-description]");
+
+      logo?.addEventListener("mouseover", () => {
+        description?.classList.add("show-description")
+        description?.classList.remove("hide-description")
+      });
+      logo?.addEventListener("mouseleave", () => {
+        description?.classList.add("hide-description")
+        description?.classList.remove("show-description")
+      });
+    }
+  }
+  customElements.define("technology-logo", TechnologyLogo);
+</script>
+<style>
+  .hide-description {
+    visibility: hidden;
+    /* height: 0; */
+  }
+  .show-description {
+    visibility: visible;
+    height: auto;
+  }
+</style>

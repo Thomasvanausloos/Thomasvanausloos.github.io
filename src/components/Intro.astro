@@ -9,53 +9,48 @@ import PageTitle from "../components/PageTitle.astro";
     subtitle="Web Developer. Angular enthousiast. Echtgenoot & vader."
   />
   <section class="mt-16">
-    <p class="mb-10">Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende
+    <p class="mb-10">
+      Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende
       informatie terug vinden:
     </p>
     <div class="grid grid-cols-2 grid-rows-1 mt-18">
       <!-- <img src="../images/profile-right.jpg" class="col-span-1 row-span-2" /> -->
       <!-- <div class="mb-5 col-span-1 row-span-2 pl-8"> -->
-        <div class="mb-5 col-span-1 row-span-2">
-          <!-- Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende -->
-          <!-- informatie terug vinden: -->
-          <ul>
-            <li>
-              Meer info over wie ik ben, wat ik doe en hoe we eventueel samen kunnen
-              werken.
-            </li>
-            <!-- <li>My personal <a href={`${SITE_URL}/blog`}>blog</a> and notes. Ranging from technical topics to random insights I have had over the years.</li> -->
-            <li>
-              Informatie over mijn <a href={`${SITE_URL}/education-and-skills`}
+      <div class="mb-5 col-span-1 row-span-2">
+        <!-- Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende -->
+        <!-- informatie terug vinden: -->
+        <ul>
+          <li>
+            Meer info over wie ik ben, wat ik doe en hoe we eventueel samen
+            kunnen werken.
+          </li>
+          <!-- <li>My personal <a href={`${SITE_URL}/blog`}>blog</a> and notes. Ranging from technical topics to random insights I have had over the years.</li> -->
+          <li>
+            Informatie over mijn <a href={`${SITE_URL}/education-and-skills`}
               >werkervaring</a
-              > en de verschillende<a href={`${SITE_URL}/projects`}> projecten</a> waar
-              ik tot nu toe op gewerkt heb.
-            </li>
-            <li>
-              Mijn <a href={`${SITE_URL}/contact`}
-              >contactgegevens</a>.
-            </li>
-          </ul>
-        </div>
-        <figure >
-          <div class="profile-pic">
-          </div>
-        </figure>
-        <!-- <img src="../images/profile-left-kleur.jpg" class="col-span-1 row-span-2 mt-2 mb-2 ml-8 profile-pic" /> -->
+            > en de verschillende<a href={`${SITE_URL}/projects`}> projecten</a>
+            waar ik tot nu toe op gewerkt heb.
+          </li>
+          <li>
+            Mijn <a href={`${SITE_URL}/contact`}>contactgegevens</a>.
+          </li>
+        </ul>
       </div>
-    </section>
+      <figure>
+        <div class="profile-pic hover:scale-125 transition-transform duration-300"></div>
+      </figure>
+    </div>
   </section>
-  <style>
-    .profile-pic{
-      height: 250px;
+</section>
+<style>
+  .profile-pic {
+    height: 250px;
     width: 250px;
     border-radius: 50%;
     background-image: url(../images/profile-left-kleur.jpg);
-    /* background-size: contain; */
     background-size: auto 250px;
     background-repeat: no-repeat;
     background-position-x: center;
     margin-left: 3rem;
-
-    }
-  </style>
-    
+  }
+</style>

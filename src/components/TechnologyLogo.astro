@@ -5,10 +5,10 @@ const { technology } = Astro.props;
 <technology-logo class="hover:scale-150 transition-transform">
   <img
     src={technology.logoUrl}
-    class="w-16 h-16 "
+    class="w-14 h-14 "
     data-technology-logo
   />
-  <p class="hide-description pt-0 text-center text-[12px] text-slate-500" data-technology-description>{technology.description}</p>
+  <p class="hide-description pt-0 text-center text-[10px] text-slate-500" data-technology-description>{technology.description}</p>
 </technology-logo>
 <script>
   export class TechnologyLogo extends HTMLElement {

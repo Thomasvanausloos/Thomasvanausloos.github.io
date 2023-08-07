@@ -1,18 +1,43 @@
-  ---
+---
 import { SITE_URL } from "../config";
-import PageTitle from "../components/PageTitle.astro"
+import PageTitle from "../components/PageTitle.astro";
 ---
 
 <section class="mb-8">
-  <PageTitle title="Thomas Vanausloos" subtitle="Web Developer. Angular enthousiast. Echtgenoot & vader."></PageTitle>
-  <div>
-    <p class="mb-5">
-      Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende informatie terug vinden:
-      <ul>
-        <li>Meer info over wie ik ben, wat ik doe en hoe we eventueel samen kunnen werken.</li>
-        <!-- <li>My personal <a href={`${SITE_URL}/blog`}>blog</a> and notes. Ranging from technical topics to random insights I have had over the years.</li> -->
-        <li>Informatie over mijn <a href={`${SITE_URL}/education-and-skills`}>werkervaring</a> en de verschillende<a href={`${SITE_URL}/projects`}> projecten</a> waar ik tot nu toe op gewerkt heb.</li>
-      </ul>
+  <PageTitle
+    title="Thomas Vanausloos"
+    subtitle="Web Developer. Angular enthousiast. Echtgenoot & vader."
+  />
+  <section class="mt-16">
+    <p class="mb-10">Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende
+      informatie terug vinden:
     </p>
-  </div>
-</section>
+    <div class="grid grid-cols-2 grid-rows-1 mt-18">
+      <!-- <img src="../images/profile-right.jpg" class="col-span-1 row-span-2" /> -->
+      <!-- <div class="mb-5 col-span-1 row-span-2 pl-8"> -->
+        <div class="mb-5 col-span-1 row-span-2">
+          <!-- Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende -->
+          <!-- informatie terug vinden: -->
+          <ul>
+            <li>
+              Meer info over wie ik ben, wat ik doe en hoe we eventueel samen kunnen
+              werken.
+            </li>
+            <!-- <li>My personal <a href={`${SITE_URL}/blog`}>blog</a> and notes. Ranging from technical topics to random insights I have had over the years.</li> -->
+            <li>
+              Informatie over mijn <a href={`${SITE_URL}/education-and-skills`}
+              >werkervaring</a
+              > en de verschillende<a href={`${SITE_URL}/projects`}> projecten</a> waar
+              ik tot nu toe op gewerkt heb.
+            </li>
+            <li>
+              Mijn <a href={`${SITE_URL}/contact`}
+              >contactgegevens</a>.
+            </li>
+          </ul>
+        </div>
+        <img src="../images/profile-left.jpg" class="col-span-1 row-span-2 h-[250px] w-auto mt-2 mb-2 ml-8" />
+      </div>
+    </section>
+  </section>
+    

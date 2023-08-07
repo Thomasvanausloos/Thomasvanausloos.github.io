@@ -1,6 +1,7 @@
 ---
 import { SITE_URL } from "../config";
 import PageTitle from "../components/PageTitle.astro";
+import {Icon} from "astro-icon"
 ---
 
 <section class="mb-8">
@@ -8,15 +9,15 @@ import PageTitle from "../components/PageTitle.astro";
     title="Thomas Vanausloos"
     subtitle="Web Developer. Angular enthousiast. Echtgenoot & vader."
   />
-  <section class="mt-16">
-    <p class="mb-10">
+  <section>
+    <p class="mb-8">
       Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende
       informatie terug vinden:
     </p>
     <div class="grid grid-cols-2 grid-rows-1 mt-18">
       <!-- <img src="../images/profile-right.jpg" class="col-span-1 row-span-2" /> -->
       <!-- <div class="mb-5 col-span-1 row-span-2 pl-8"> -->
-      <div class="mb-5 col-span-1 row-span-2">
+      <div class="mt-8 col-span-1 row-span-2">
         <!-- Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende -->
         <!-- informatie terug vinden: -->
         <ul>
@@ -29,17 +30,38 @@ import PageTitle from "../components/PageTitle.astro";
             Informatie over mijn <a href={`${SITE_URL}/education-and-skills`}
               >werkervaring</a
             > en de verschillende<a href={`${SITE_URL}/projects`}> projecten</a>
-            waar ik tot nu toe op gewerkt heb.
+            waar ik tot nu toe aan gewerkt heb.
           </li>
-          <li>
+          <!-- <li>
             Mijn <a href={`${SITE_URL}/contact`}>contactgegevens</a>.
-          </li>
+          </li> -->
         </ul>
       </div>
       <figure>
         <div class="profile-pic hover:scale-125 transition-transform duration-300"></div>
       </figure>
     </div>
+  </section>
+  <section class="mt-8">
+    <sl>
+      <li class="flex flex-row">
+        <Icon name="mdi:linkedin" /><span class="ml-2"
+          ><a
+            href="https://www.linkedin.com/in/thomasvanausloos/"
+            target="_blank">linkedin.com/thomasvanausloos</a
+          ></span
+        >
+      </li>
+      <li class="flex flex-row">
+        <Icon name="mdi:email" /><span class="ml-2"
+          >thomasvanausloos@gmail.com</span>
+      </li>
+      <li class="flex flex-row">
+        <Icon name="mdi:phone" /><span class="ml-2"
+          >Kan bekomen worden na contact via mail of LinkedIn.</span
+        >
+      </li>
+    </sl>
   </section>
 </section>
 <style>
@@ -52,5 +74,10 @@ import PageTitle from "../components/PageTitle.astro";
     background-repeat: no-repeat;
     background-position-x: center;
     margin-left: 3rem;
+  }
+  [astro-icon] {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5rem;
   }
 </style>

@@ -94,6 +94,14 @@
         scroll-behavior: smooth;
     }
 
+    @media (max-width: 1024px) {
+        :root {
+            /* base font-size 1px larger for better visibility */
+            font-size: 1em;
+            line-height: 1.85;
+        }
+      }
+
     h1,
     h2,
     h3,

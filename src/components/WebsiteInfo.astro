@@ -35,13 +35,18 @@ import { SITE_URL } from "../config";
 </div>
 <style>
   .profile-pic {
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    background-image: url(../images/kunlabora-profile-pic.jpg);
-    background-size: auto 250px;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    margin-left: 3rem;
-  }
+      height: 250px;
+      width: 250px;
+      border-radius: 50%;
+      background-image: url(../images/kunlabora-profile-pic.jpg);
+      background-size: auto 250px;
+      background-repeat: no-repeat;
+      background-position-x: center;
+      margin-left: 3rem;
+    }
+    @media (max-width: 1024px) {
+      .profile-pic {
+        margin: auto;
+        }
+      }
 </style>

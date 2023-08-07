@@ -16,4 +16,6 @@ technologies:
       description: Typescript
     - logoUrl: ../tech-stack/tailwind-css.svg
       description: Tailwind CSS
+    - logoUrl: ../tech-stack/NuxtJS.png
+      description: NuxtJs
 ---

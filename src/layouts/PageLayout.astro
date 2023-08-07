@@ -31,9 +31,7 @@ import Footer from "../components/Footer.astro";
     <FontAwesome />
   </head>
 
-  <body
-    class="max-w-3xl mx-auto min-h-screen px-6 sm:px-8"
-  >
+  <body class="max-w-3xl mx-auto min-h-screen px-6 sm:px-8">
     <Header />
     <main id="main">
       <slot name="main" />
@@ -48,6 +46,17 @@ import Footer from "../components/Footer.astro";
           "footer";
         grid-template-rows: 5rem minmax(0, 1fr) 5rem;
         grid-template-columns: minmax(0, 1fr);
+      }
+      @media (max-width: 1024px) {
+        body {
+          display: grid;
+          grid-template-areas:
+            "header"
+            "main"
+            "footer";
+          grid-template-rows: 5rem minmax(0, 1fr) 1rem;
+          grid-template-columns: minmax(0, 1fr);
+        }
       }
       main {
         grid-area: main;

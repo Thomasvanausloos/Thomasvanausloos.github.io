@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<sl>
+  <li class="flex flex-row items-center">
+    <Icon name="mdi:linkedin" /><span class="ml-2"
+      ><a href="https://www.linkedin.com/in/thomasvanausloos/" target="_blank"
+        >linkedin.com/thomasvanausloos</a
+      ></span
+    >
+  </li>
+  <li class="flex flex-row items-center">
+    <Icon name="mdi:email" /><span class="ml-2">thomasvanausloos@gmail.com</span
+    >
+  </li>
+  <li class="flex flex-row items-center">
+    <Icon name="mdi:phone" /><span class="ml-2"
+      >Kan bekomen worden na contact via mail of LinkedIn.</span
+    >
+  </li>
+</sl>
+<style>
+  [astro-icon] {
+    width: 30px;
+    min-width: 30px;
+
+    height: 30px;
+    min-height: 30px;
+    margin-right: 0.5rem;
+  }
+</style>

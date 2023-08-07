@@ -1,0 +1,47 @@
+---
+import { SITE_URL } from "../config";
+---
+
+<figure class="lg:invisible lg:h-0 max-lg:visible ">
+    <div class="profile-pic hover:scale-125 transition-transform duration-300">
+    </div>
+  </figure>
+
+<p class="lg:mb-8 max-lg:mt-6 max-lg:pl-[1.375rem]">
+  Hallo! Welkom op mijn persoonlijke website! Hier kan je volgende informatie
+  terug vinden:
+</p>
+<div
+  class="lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:mt-18 max-lg:flex max-lg:flex-col"
+>
+  <div class="mt-8 lg:col-span-1 lg:row-span-1 max-lg:order-2">
+    <ul>
+      <li>
+        Meer info over wie ik ben, wat ik doe en hoe we eventueel samen kunnen
+        werken.
+      </li>
+      <li>
+        Informatie over mijn <a href={`${SITE_URL}/education-and-skills`}
+          >werkervaring</a
+        > en de verschillende<a href={`${SITE_URL}/projects`}> projecten</a>
+        waar ik tot nu toe aan gewerkt heb.
+      </li>
+    </ul>
+  </div>
+  <figure class="max-lg:invisible max-lg:h-0 lg:visible">
+    <div class="profile-pic hover:scale-125 transition-transform duration-300">
+    </div>
+  </figure>
+</div>
+<style>
+  .profile-pic {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-image: url(../images/kunlabora-profile-pic.jpg);
+    background-size: auto 250px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    margin-left: 3rem;
+  }
+</style>

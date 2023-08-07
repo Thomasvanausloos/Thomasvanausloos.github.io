@@ -36,8 +36,26 @@ import PageTitle from "../components/PageTitle.astro";
             </li>
           </ul>
         </div>
-        <img src="../images/profile-left.jpg" class="col-span-1 row-span-2 h-[250px] w-auto mt-2 mb-2 ml-8" />
+        <figure >
+          <div class="profile-pic">
+          </div>
+        </figure>
+        <!-- <img src="../images/profile-left-kleur.jpg" class="col-span-1 row-span-2 mt-2 mb-2 ml-8 profile-pic" /> -->
       </div>
     </section>
   </section>
+  <style>
+    .profile-pic{
+      height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-image: url(../images/profile-left-kleur.jpg);
+    /* background-size: contain; */
+    background-size: auto 250px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    margin-left: 3rem;
+
+    }
+  </style>
     

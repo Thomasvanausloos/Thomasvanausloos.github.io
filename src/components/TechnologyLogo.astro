@@ -8,7 +8,7 @@ const { technology } = Astro.props;
     class="lg:w-14 lg:h-14 max-lg:w-12 max-lg:h-12 "
     data-technology-logo
   />
-  <p class="hide-description pt-0 text-center lg:text-[10px] max-lg:text-[8px] text-slate-500" data-technology-description>{technology.description}</p>
+  <p class="hide-description pt-0 text-center text-[10px] text-slate-500" data-technology-description>{technology.description}</p>
 </technology-logo>
 <script>
   export class TechnologyLogo extends HTMLElement {
